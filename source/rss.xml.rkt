@@ -5,9 +5,9 @@
   (date-display-format format)
   (date->string (current-date) #t))
 (define rss.xml
-  (RC #:title "愚者"
-      #:link "https://alpha-beta-eta.github.io/"
-      #:description "愚者的主页, 关于逻辑, 语言, 计算."
+  (RC #:title "水冰月"
+      #:link "https://sby7219.github.io/sby.github.io/"
+      #:description "水冰月的主页, 关于逻辑, 语言, 计算."
       (Item (Title "Linear Algebra (Hoffman &amp; Kunze) 翻译")
             (Link "linear_algebra.html")
             (Description "对于线性代数书籍Hoffman &amp; Kunze的翻译, 目前已完成了前8章.")

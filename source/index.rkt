@@ -3,9 +3,9 @@
 (require SMathML racket/date "colorfulize.rkt")
 (define index.html
   (Prelude
-   #:title "愚者"
+   #:title "水冰月"
    #:css "styles.css"
-   (H1 "愚者 " (A "RSS" #:attr* '((href "rss.xml"))) " "
+   (H1 "水冰月 " (A "RSS" #:attr* '((href "rss.xml"))) " "
        (A "网站介绍" #:attr* '((href "intro.html"))))
    (P "近来我删去了一些内容, 主要是为了重写. "
       "以下这些框的色彩是随机生成的, 仅是因为看厌了白色而临时为之.")
