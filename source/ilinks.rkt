@@ -1,11 +1,11 @@
 #lang racket
-(provide merge-links.html)
+(provide ilinks.html)
 (require SMathML)
 
 (define friends-section-color "#E6F2FF")  ; 淡蓝色
 (define interesting-section-color "#FFF2E6")  ; 淡橙色
 
-(define merge-links.html
+(define ilinks.html
   (TnTmPrelude
    #:title "友情链接 & 有趣的链接"
    #:css "styles.css"
