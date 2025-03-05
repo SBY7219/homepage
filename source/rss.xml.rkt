@@ -5,25 +5,30 @@
   (date-display-format format)
   (date->string (current-date) #t))
 (define rss.xml
-  (RC #:title "水冰月"
+  (RC #:title "施秉佚"
       #:link "https://sby7219.github.io/sby.github.io/"
-      #:description "水冰月的主页, 关于逻辑, 语言, 计算."
+      #:description "施秉佚的主页, 关于统计, 概率, 计算."
+      (Item (Title "个人简历")
+            (Description "一份简要的CV.")
+            (Link "cv.pdf"))
+      (Item (Title "个人论文和文章")
+            (Description "本人的可以被定义为new/novel的论文和文章.")
+            (Link "papers.html"))
+      (Item (Title "概率统计笔记")
+            (Description "整理的一些中文网络中比较少见的概率统计方面笔记.")
+            (Link "probstat.html"))
       (Item (Title "Linear Algebra (Hoffman &amp; Kunze) 翻译")
             (Link "linear_algebra.html")
             (Description "对于线性代数书籍Hoffman &amp; Kunze的翻译, 目前已完成了前8章.")
             (PubDate "Wed, 18 Sep 2024 19:41:36 -0400"))
       (Item (Title "Lectures on the Curry-Howard Isomorphism翻译")
-            (Description "这是一本关于Curry-Howard同构的逻辑学书籍, 深入浅出. 目前我还没有翻译多少.")
+            (Description "这是一本关于Curry-Howard同构的逻辑学书籍, 深入浅出. 目前还没有翻译多少.")
             (Link "curry-howard.html")
             (PubDate "Sun, 21 Jan 2024 21:16:21 +0800"))
       (Item (Title "程序设计的邀请")
-            (Description "定位于初学者的程序设计教程, 尚未完工.")
+            (Description "定位于初学者的程序设计教程.")
             (Link "programming.html"))
       (Item (Title "The Little Typer翻译")
             (Description "The Little Typer是一本关于依赖类型的书籍.")
             (Link "little_typer.html"))
-      (Item (Title "P423笔记")
-            (Description "IUB P423是一门关于编译器的课程.")
-            (Link "p423.html"))
-      
       ))

@@ -27,7 +27,6 @@
            #:attr* '((href "https://wwli.asia/index.php/zh/cv-item-zh"))))
     (H2 (A "Jon Sterling的个人主页"
            #:attr* '((href "https://www.jonmsterling.com/"))))
-    (H2 (A "圆角骑士魔理沙的个人主页" #:attr* '((href "https://marisa.moe/"))))
     (H2 (A "Trebor Huang的个人主页" #:attr* '((href "https://trebor-huang.github.io/"))))
     (H2 (A "Pavel Panchekha的个人主页"
            #:attr* '((href "https://pavpanchekha.com/"))))
