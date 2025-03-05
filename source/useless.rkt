@@ -3,9 +3,9 @@
 (require SMathML "colorfulize.rkt")
 (define useless.html
   (Prelude
-   #:title "一些没用的笔记"
+   #:title "一些杂乱的没有整理的笔记"
    #:css "styles.css"
-   (H1 "一些没用的笔记")
+   (H1 "一些杂乱的没有整理的笔记")
    (P "我又幻想了.")
    ((compose colorfulize columnize)
     (H2 (A "The Ship of Theseus" #:attr* '((href "Ship-of-Theseus.html"))))
