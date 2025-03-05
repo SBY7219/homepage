@@ -10,10 +10,8 @@
    #:title "友情链接 & 有趣的链接"
    #:css "styles.css"
    
-   ;; 页面标题
    (H1 "链接集合")
    
-   ;; 友情链接部分
    (DIV
     #:attr* `((style . ,(format "background-color: ~a; padding: 15px; border-radius: 8px; margin-bottom: 20px;" 
                                 friends-section-color)))
@@ -26,7 +24,7 @@
             #:attr* '((href "https://zhanghenry.site/"))))
      ))
    
-   ;; 有趣的链接部分
+
    (DIV
     #:attr* `((style . ,(format "background-color: ~a; padding: 15px; border-radius: 8px;" 
                                 interesting-section-color)))
