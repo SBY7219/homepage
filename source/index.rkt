@@ -17,7 +17,7 @@
         (A "代码集" #:attr* '((href "notes/pl.zip"))))
     (H2 (A "Hoffman &amp; Kunze" #:attr* '((href "hoffman.html"))))
 
-    (H2 (A "程序设计的邀请" #:attr* '((href "programming.html"))))
+    (H2 (A "关于程序设计的思考" #:attr* '((href "programming.html"))))
     (H2 (A "指称语义学讲义翻译" #:attr* '((href "denotational_semantics_notes.html"))))
 
     (H2 (A "概率统计笔记" #:attr* '((href "probstat.html"))))

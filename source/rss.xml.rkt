@@ -25,7 +25,7 @@
             (Description "这是一本关于Curry-Howard同构的逻辑学书籍, 深入浅出. 目前还没有翻译多少.")
             (Link "curry-howard.html")
             (PubDate "Sun, 21 Jan 2024 21:16:21 +0800"))
-      (Item (Title "程序设计的邀请")
+      (Item (Title "关于程序设计的思考")
             (Description "定位于初学者的程序设计教程.")
             (Link "programming.html"))
       (Item (Title "The Little Typer翻译")
