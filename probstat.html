@@ -2,201 +2,133 @@
   <head>
     <meta charset="utf-8" />
     <title>概率&统计笔记</title>
-    <link href="styles.css" rel="stylesheet" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+      }
+      h2 {
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-top: 30px;
+        color: #2c3e50;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      .note-card {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        padding: 15px;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+      .note-card:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(-3px);
+      }
+      a {
+        text-decoration: none;
+        color: #3498db;
+        font-weight: 500;
+      }
+      a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+      @media (max-width: 768px) {
+        .grid-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <h1>概率与统计笔记集</h1>
     
     <h2>基础概念</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/统计简述.pdf">统计简述</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/统计模型.pdf">统计模型</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/总体和样本.pdf">总体和样本</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/描述性统计.pdf">描述性统计</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/统计量.pdf">统计量</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/统计推断.pdf">统计推断</a></h3>
-        </td>
-      </tr>
-    </table>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/统计简述.pdf">统计简述</a></div>
+      <div class="note-card"><a href="notes/统计模型.pdf">统计模型</a></div>
+      <div class="note-card"><a href="notes/总体和样本.pdf">总体和样本</a></div>
+      <div class="note-card"><a href="notes/描述性统计.pdf">描述性统计</a></div>
+      <div class="note-card"><a href="notes/统计量.pdf">统计量</a></div>
+      <div class="note-card"><a href="notes/统计推断.pdf">统计推断</a></div>
+    </div>
     
     <h2>分布理论</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/三大分布.pdf">三大分布</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/抽样分布.pdf">抽样分布</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/指数族.pdf">指数族</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/位置-尺度族.pdf">位置-尺度族</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/经验分布.pdf">经验分布</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/分位数函数.pdf">分位数函数</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/正态总体下样本均值和样本方差的分布.pdf">正态总体下样本均值和样本方差的分布</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/统计量的极限分布.pdf">统计量的极限分布</a></h3>
-        </td>
-      </tr>
-    </table>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/三大分布.pdf">三大分布</a></div>
+      <div class="note-card"><a href="notes/抽样分布.pdf">抽样分布</a></div>
+      <div class="note-card"><a href="notes/指数族.pdf">指数族</a></div>
+      <div class="note-card"><a href="notes/位置-尺度族.pdf">位置-尺度族</a></div>
+      <div class="note-card"><a href="notes/经验分布.pdf">经验分布</a></div>
+      <div class="note-card"><a href="notes/分位数函数.pdf">分位数函数</a></div>
+      <div class="note-card"><a href="notes/正态总体下样本均值和样本方差的分布.pdf">正态总体下样本均值和样本方差的分布</a></div>
+      <div class="note-card"><a href="notes/统计量的极限分布.pdf">统计量的极限分布</a></div>
+    </div>
     
     <h2>数据可视化</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/散点图.pdf">散点图</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/直方图.pdf">直方图</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/箱线图.pdf">箱线图</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/Q-Q图.pdf">Q-Q图</a></h3>
-        </td>
-      </tr>
-    </table>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/散点图.pdf">散点图</a></div>
+      <div class="note-card"><a href="notes/直方图.pdf">直方图</a></div>
+      <div class="note-card"><a href="notes/箱线图.pdf">箱线图</a></div>
+      <div class="note-card"><a href="notes/Q-Q图.pdf">Q-Q图</a></div>
+    </div>
     
     <h2>估计理论</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/点估计.pdf">点估计</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/估计量.pdf">估计量</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/极大似然估计.pdf">极大似然估计</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/贝叶斯估计.pdf">贝叶斯估计</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/矩估计.pdf">矩估计</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/广义矩估计.pdf">广义矩估计</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/似然方法.pdf">似然方法</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/无偏估计量.pdf">无偏估计量</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/次序统计量.pdf">次序统计量</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/均方误差.pdf">均方误差</a></h3>
-        </td>
-      </tr>
-    </table>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/点估计.pdf">点估计</a></div>
+      <div class="note-card"><a href="notes/估计量.pdf">估计量</a></div>
+      <div class="note-card"><a href="notes/极大似然估计.pdf">极大似然估计</a></div>
+      <div class="note-card"><a href="notes/贝叶斯估计.pdf">贝叶斯估计</a></div>
+      <div class="note-card"><a href="notes/矩估计.pdf">矩估计</a></div>
+      <div class="note-card"><a href="notes/广义矩估计.pdf">广义矩估计</a></div>
+      <div class="note-card"><a href="notes/似然方法.pdf">似然方法</a></div>
+      <div class="note-card"><a href="notes/无偏估计量.pdf">无偏估计量</a></div>
+      <div class="note-card"><a href="notes/次序统计量.pdf">次序统计量</a></div>
+      <div class="note-card"><a href="notes/均方误差.pdf">均方误差</a></div>
+    </div>
     
-    <h2>具体估计问题</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/不等均值等方差的标准差UMVUE.pdf">不等均值等方差的标准差UMVUE</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/等均值不等方差样本的均值UMVUE.pdf">等均值不等方差样本的均值UMVUE</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/单变量样本.pdf">单变量样本</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/均匀分布情形.pdf">均匀分布情形</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/双样本不同均值不同方差检验.pdf">双样本不同均值不同方差检验</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/本福特定律.pdf">本福特定律</a></h3>
-        </td>
-      </tr>
-    </table>
+    <h2>特殊估计问题</h2>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/不等均值等方差的标准差UMVUE.pdf">不等均值等方差的标准差UMVUE</a></div>
+      <div class="note-card"><a href="notes/等均值不等方差样本的均值UMVUE.pdf">等均值不等方差样本的均值UMVUE</a></div>
+      <div class="note-card"><a href="notes/单变量样本.pdf">单变量样本</a></div>
+      <div class="note-card"><a href="notes/均匀分布情形.pdf">均匀分布情形</a></div>
+      <div class="note-card"><a href="notes/双样本不同均值不同方差检验.pdf">双样本不同均值不同方差检验</a></div>
+      <div class="note-card"><a href="notes/本福特定律.pdf">本福特定律</a></div>
+    </div>
     
     <h2>相关性与回归</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/相关性.pdf">相关性</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/自相关性.pdf">自相关性</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/Cox回归.pdf">Cox回归</a></h3>
-        </td>
-        <td>
-          <h3><a href="notes/Fisher打分法.pdf">Fisher打分法</a></h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h3><a href="notes/EM 算法.pdf">EM 算法</a></h3>
-        </td>
-        <td></td>
-      </tr>
-    </table>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/相关性.pdf">相关性</a></div>
+      <div class="note-card"><a href="notes/自相关性.pdf">自相关性</a></div>
+      <div class="note-card"><a href="notes/Cox回归.pdf">Cox回归</a></div>
+      <div class="note-card"><a href="notes/Fisher打分法.pdf">Fisher打分法</a></div>
+      <div class="note-card"><a href="notes/EM 算法.pdf">EM 算法</a></div>
+    </div>
     
-    <h2>完整笔记</h2>
-    <table width="100%">
-      <tr>
-        <td>
-          <h3><a href="notes/mathstat2020-ZH.pdf">数理统计（中文版from sara）</a></h3>
-        </td>
-        <td></td>
-      </tr>
-    </table>
+    <h2>综合资料</h2>
+    <div class="grid-container">
+      <div class="note-card"><a href="notes/mathstat2020-ZH.pdf">数理统计（2020中文版）</a></div>
+    </div>
   </body>
 </html>
