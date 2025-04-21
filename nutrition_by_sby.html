@@ -100,6 +100,8 @@
         .button-group {
             display: flex;
             gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         button {
             padding: 10px 20px;
@@ -131,6 +133,17 @@
         }
         button.next:hover {
             background-color: #2980b9;
+        }
+        button.prev {
+            background-color: #95a5a6;
+            color: white;
+        }
+        button.prev:hover:not([disabled]) {
+            background-color: #7f8c8d;
+        }
+        button.prev:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         .progress-container {
             margin: 25px 0;
@@ -210,6 +223,13 @@
         .unselected {
             opacity: 0.6;
         }
+        
+        /* 确保在手机上能够正常显示 */
+        @media (max-width: 480px) {
+            .button-group {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -220,16 +240,16 @@
             <p>注意：本工具仅供参考，不能替代专业医疗建议。</p>
             <p>本工具不收集任何个人信息，所有数据仅用于生成营养素缺乏的自检报告。</p>
             <p>如果您有任何健康问题或疑虑，请咨询医生或营养师。</p>
-            <p>也可以咨询水冰月(无证,后果自负嘻嘻)。</p>
+            <p>也可以咨询水冰月(无证, 后果自负嘻嘻)。</p>
             <p class="usage-info">使用方法：<br>
                1. 仔细阅读每个问题<br>
                2. 点击"是"或"否"按钮，或使用键盘Y/N键回答<br>
-               3. 完成所有问题后查看您的营养状况报告</p>
+               3. 如需修改前一题答案，可点击"返回上一题"按钮<br>
+               4. 完成所有问题后查看您的营养状况报告</p>
             <button id="accept-btn" class="accept-btn">我已了解，开始测试</button>
         </div>
     </div>
         
-
     <div class="container">
         <div class="header">
             <h1>营养素缺乏自检工具</h1>
@@ -246,6 +266,7 @@
             </div>
             <div id="question" class="question"></div>
             <div class="button-group">
+                <button id="prev-btn" class="prev" disabled>返回上一题</button>
                 <button id="yes-btn" class="yes">是 (Y)</button>
                 <button id="no-btn" class="no">否 (N)</button>
             </div>
@@ -279,7 +300,7 @@
             {"question": "您最近有出现过肌肉震颤,抽搐或痉挛吗?", "scores": {"B族": 1, "钙": 2}},
             {"question": "您有蛀牙吗?", "scores": {"钙": 2}},
             {"question": "对着镜子观察是否有面色苍白的情况.", "scores": {"铁": 2}},
-            {"question": "您是否痛经或月经量比较多?", "scores": {"铁": 2}},
+            {"question": "您是否痛经或月经量比较多?(男性直接选N)", "scores": {"铁": 2}},
             {"question": "您吃饭会感觉有滋有味吗,有恶心的感觉吗?(恶心选Y)", "scores": {"铁": 2}},
             {"question": "(青少年)自己观察是否比同龄人要矮小.", "scores": {"VA": 2, "蛋白质": 1}},
             {"question": "您感觉眼睛干涩不舒服吗?(可能伴有眼疼)", "scores": {"VA": 1}},
@@ -337,10 +358,11 @@
         };
 
         // 设定营养素缺乏的阈值（百分比）
-        const threshold = 0.66; // 80%
+        const threshold = 0.66; // 66%
 
         let currentQuestion = 0;
         let selectedAnswer = null;
+        let answerHistory = []; // 用于存储用户的回答历史
 
         // 获取DOM元素
         const questionElement = document.getElementById('question');
@@ -352,12 +374,16 @@
         const progressText = document.getElementById('progress-text');
         const yesBtn = document.getElementById('yes-btn');
         const noBtn = document.getElementById('no-btn');
+        const prevBtn = document.getElementById('prev-btn');
         const restartBtn = document.getElementById('restart-btn');
 
         // 显示当前问题
         function showQuestion() {
             questionElement.textContent = `${currentQuestion + 1}. ${questions[currentQuestion].question}`;
             updateProgress();
+            
+            // 启用或禁用返回按钮
+            prevBtn.disabled = currentQuestion === 0;
         }
 
         // 更新进度条
@@ -369,15 +395,20 @@
 
         // 记录答案
         function answerQuestion(answer) {
+            // 如果在历史记录的中间位置重新回答，需要清除之后的历史
+            if (currentQuestion < answerHistory.length) {
+                answerHistory = answerHistory.slice(0, currentQuestion);
+            }
+            
+            // 记录当前答案
+            answerHistory.push(answer);
+            
             if (answer === 'yes') {
                 const scores = questions[currentQuestion].scores;
                 for (const nutrient in scores) {
                     if (nutrient in userScores) {
                         userScores[nutrient] += scores[nutrient];
-                    } else if (nutrient === "抗膳食纤维") {
-                        // 处理可能的笔误，"抗膳食纤维" 改为 "膳食纤维"
-                        userScores["膳食纤维"] += scores[nutrient];
-                    }
+                    } 
                 }
             }
 
@@ -390,6 +421,30 @@
             } else {
                 // 显示结果
                 showResults();
+            }
+        }
+
+        // 添加返回上一题的函数
+        function goToPreviousQuestion() {
+            if (currentQuestion > 0) {
+                // 减少当前问题索引
+                currentQuestion--;
+                
+                // 获取上一个回答
+                const previousAnswer = answerHistory[currentQuestion];
+                
+                // 如果上一个答案是"是"，需要减去相应分数
+                if (previousAnswer === 'yes') {
+                    const scores = questions[currentQuestion].scores;
+                    for (const nutrient in scores) {
+                        if (nutrient in userScores) {
+                            userScores[nutrient] -= scores[nutrient];
+                        } 
+                    }
+                }
+                
+                // 显示上一个问题
+                showQuestion();
             }
         }
 
@@ -449,8 +504,6 @@
             }
         }
 
-        
-
         const disclaimerModal = document.getElementById('disclaimer-modal');
         const acceptBtn = document.getElementById('accept-btn');
         // 显示声明弹窗，直到用户确认
@@ -471,9 +524,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             showDisclaimer();
         });
+        
         // 修改已有的init函数，确保重新开始测试时不再显示声明
         function init() {
             currentQuestion = 0;
+            answerHistory = []; // 清空回答历史
             for (const nutrient in userScores) {
                 userScores[nutrient] = 0;
             }
@@ -482,7 +537,6 @@
             resultsContainer.style.display = 'none';
         }
         
-
         // 事件监听器
         yesBtn.addEventListener('click', function() {
             yesBtn.classList.add('selected');
@@ -503,6 +557,9 @@
                 answerQuestion('no');
             }, 300);
         });
+        
+        // 添加返回按钮点击事件
+        prevBtn.addEventListener('click', goToPreviousQuestion);
 
         restartBtn.addEventListener('click', init);
 
@@ -514,11 +571,10 @@
                 yesBtn.click();
             } else if (e.key.toUpperCase() === 'N') {
                 noBtn.click();
+            } else if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
+                prevBtn.click(); // 通过左箭头键返回上一题
             }
         });
-
-        // 启动应用
-        init();
     </script>
 </body>
 </html>
