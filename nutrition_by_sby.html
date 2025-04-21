@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>营养素缺乏自检工具</title>
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 80%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .usage-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        .accept-btn {
+            background-color: #2ecc71;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .accept-btn:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .credit {
+            font-size: 12px;
+            color: #95a5a6;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .question-container {
+            margin-bottom: 30px;
+        }
+        .question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        button.yes {
+            background-color: #2ecc71;
+            color: white;
+        }
+        button.no {
+            background-color: #e74c3c;
+            color: white;
+        }
+        button.yes:hover {
+            background-color: #27ae60;
+        }
+        button.no:hover {
+            background-color: #c0392b;
+        }
+        button.next {
+            background-color: #3498db;
+            color: white;
+            margin-top: 20px;
+        }
+        button.next:hover {
+            background-color: #2980b9;
+        }
+        .progress-container {
+            margin: 25px 0;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .progress-text {
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        .results {
+            display: none;
+            margin-top: 20px;
+        }
+        .result-item {
+            margin-bottom: 15px;
+        }
+        .result-bar-container {
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .result-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 1s;
+        }
+        .normal {
+            background-color: #2ecc71;
+        }
+        .deficient {
+            background-color: #e74c3c;
+        }
+        .result-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .summary {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        .hidden {
+            display: none;
+        }
+        .restart-btn {
+            display: block;
+            margin: 30px auto 0;
+            background-color: #9b59b6;
+            color: white;
+        }
+        .restart-btn:hover {
+            background-color: #8e44ad;
+        }
+        .selected {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .unselected {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="disclaimer-modal" class="modal">
+        <div class="modal-content">
+            <h2>使用声明</h2>
+            <p>请根据您的实际情况回答以下问题，选择"是"或"否"。</p>
+            <p>注意：本工具仅供参考，不能替代专业医疗建议。</p>
+            <p>本工具不收集任何个人信息，所有数据仅用于生成营养素缺乏的自检报告。</p>
+            <p>如果您有任何健康问题或疑虑，请咨询医生或营养师。</p>
+            <p>也可以咨询水冰月(无证,后果自负嘻嘻)。</p>
+            <p class="usage-info">使用方法：<br>
+               1. 仔细阅读每个问题<br>
+               2. 点击"是"或"否"按钮，或使用键盘Y/N键回答<br>
+               3. 完成所有问题后查看您的营养状况报告</p>
+            <button id="accept-btn" class="accept-btn">我已了解，开始测试</button>
+        </div>
+    </div>
+        
+
+    <div class="container">
+        <div class="header">
+            <h1>营养素缺乏自检工具</h1>
+            <p>请回答以下问题，了解您的营养状况.
+            <p>检测您是否缺乏"B族","VC","VA","复合维生素","抗氧化剂","蛋白质","膳食纤维","钙","铁","锌"?
+            <p class="credit">@水冰月编写制作</p>
+        </div>
+        <div id="question-container" class="question-container">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+                </div>
+                <div id="progress-text" class="progress-text">问题 1 / 41</div>
+            </div>
+            <div id="question" class="question"></div>
+            <div class="button-group">
+                <button id="yes-btn" class="yes">是 (Y)</button>
+                <button id="no-btn" class="no">否 (N)</button>
+            </div>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>您的营养素自检结果</h2>
+            <div id="result-items"></div>
+            
+            <div id="summary" class="summary"></div>
+            
+            <button id="restart-btn" class="restart-btn">重新测试</button>
+        </div>
+    </div>
+
+    <script>
+        // 定义问题和对应的营养素分值
+        const questions = [
+            {"question": "您是否肌肉松弛?", "scores": {"B族": 1}},
+            {"question": "您觉得自己比身边人容易发脾气或者容易忧虑或者容易紧张吗?", "scores": {"B族": 2}},
+            {"question": "您患有湿疹或皮炎吗?", "scores": {"B族": 1}},
+            {"question": "您每年有超过3次的溃疡或口角发炎吗?", "scores": {"B族": 1}},
+            {"question": "您每年感冒会超过4次吗?", "scores": {"VC": 2, "VA": 2, "蛋白质": 1, "锌": 1}},
+            {"question": "您有牙龈出血或牙龈过敏的情况吗?", "scores": {"VC": 2}},
+            {"question": "您身体容易出现瘀伤吗?", "scores": {"VC": 1}},
+            {"question": "您身体有伤口时复原的时间会超过预计吗?", "scores": {"VC": 1, "蛋白质": 1, "锌": 1}},
+            {"question": "您皮肤有出现红色丘疹吗?", "scores": {"VC": 1}},
+            {"question": "您大便的间隔大于一天吗?(每天都有大便选N)", "scores": {"B族": 1, "膳食纤维": 2}},
+            {"question": "您患有脂肪肝吗?", "scores": {"膳食纤维": 1}},
+            {"question": "您是否为肥胖?(BMI>23且体脂率较高)", "scores": {"蛋白质": 2, "膳食纤维": 2}},
+            {"question": "您最近有出现过肌肉震颤,抽搐或痉挛吗?", "scores": {"B族": 1, "钙": 2}},
+            {"question": "您有蛀牙吗?", "scores": {"钙": 2}},
+            {"question": "对着镜子观察是否有面色苍白的情况.", "scores": {"铁": 2}},
+            {"question": "您是否痛经或月经量比较多?", "scores": {"铁": 2}},
+            {"question": "您吃饭会感觉有滋有味吗,有恶心的感觉吗?(恶心选Y)", "scores": {"铁": 2}},
+            {"question": "(青少年)自己观察是否比同龄人要矮小.", "scores": {"VA": 2, "蛋白质": 1}},
+            {"question": "您感觉眼睛干涩不舒服吗?(可能伴有眼疼)", "scores": {"VA": 1}},
+            {"question": "您皮肤干燥吗?(可能伴有毛囊角化)", "scores": {"VA": 1}},
+            {"question": "您是否味觉或嗅觉减退.", "scores": {"锌": 2}},
+            {"question": "您自查看是否有两个以上的手指甲有白斑.", "scores": {"锌": 2}},
+            {"question": "您每周都有应酬吗?", "scores": {"B族": 1}},
+            {"question": "您吸烟吗?", "scores": {"复合维生素": 2,"抗氧化剂":2}},
+            {"question": "您饮酒吗?", "scores": {"B族": 2, "复合维生素": 2}},
+            {"question": "您每月都有服用药物的情况吗?", "scores": {"复合维生素": 2}},
+            {"question": "您饮食是否有不规律的情况?", "scores": {"复合维生素": 2}},
+            {"question": "您是否一周吃粗粮少于2次?", "scores": {"膳食纤维": 1}},
+            {"question": "您是否每天果蔬少于1斤?", "scores": {"复合维生素": 2, "膳食纤维": 1}},
+            {"question": "你是否不喝牛奶或很少喝牛奶?", "scores": {"钙": 1}},
+            {"question": "您是不是常喝浓茶或咖啡?", "scores": {"钙": 1}},
+            {"question": "您患有高血压?", "scores": {"钙": 2}},
+            {"question": "您患有骨质疏松吗?", "scores": {"钙": 2}},
+            {"question": "您健身吗?", "scores": {"蛋白质": 2}},
+            {"question": "您平时是不是不太吃牛羊肉?", "scores": {"蛋白质": 1}},
+            {"question": "您感觉工作或生活的压力大吗?", "scores": {"抗氧化剂":1}},
+            {"question": "您平均每天用电脑的时间超过3小时吗?", "scores": {"VA":1,"抗氧化剂": 1}},
+            {"question": "您的运动强度比一般人大吗?", "scores": {"抗氧化剂": 1}},
+            {"question": "您是否生活在繁华大城市", "scores": {"抗氧化剂": 1}},
+            {"question": "您经常感觉疲劳或情绪低落吗?", "scores": {"铁": 2}},
+            {"question": "您患有缺铁性贫血吗?", "scores": {"铁": 2}},
+            {"question": "您经常佩戴隐形眼镜吗?", "scores": {"VA": 1}}
+        ];
+
+        // 定义营养素总分
+        const totalScores = {
+            "B族": 10,
+            "VC": 7,
+            "VA": 8,
+            "复合维生素": 10,
+            "抗氧化剂": 6,
+            "蛋白质": 8,
+            "膳食纤维": 7,
+            "钙": 10,
+            "铁": 10,
+            "锌": 6
+        };
+
+        // 初始化用户得分
+        const userScores = {
+            "B族": 0,
+            "VC": 0,
+            "VA": 0,
+            "复合维生素": 0,
+            "抗氧化剂": 0,
+            "蛋白质": 0,
+            "膳食纤维": 0,
+            "钙": 0,
+            "铁": 0,
+            "锌": 0
+        };
+
+        // 设定营养素缺乏的阈值（百分比）
+        const threshold = 0.67; // 80%
+
+        let currentQuestion = 0;
+        let selectedAnswer = null;
+
+        // 获取DOM元素
+        const questionElement = document.getElementById('question');
+        const questionContainer = document.getElementById('question-container');
+        const resultsContainer = document.getElementById('results');
+        const resultItemsContainer = document.getElementById('result-items');
+        const summaryElement = document.getElementById('summary');
+        const progressBar = document.getElementById('progress');
+        const progressText = document.getElementById('progress-text');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // 显示当前问题
+        function showQuestion() {
+            questionElement.textContent = `${currentQuestion + 1}. ${questions[currentQuestion].question}`;
+            updateProgress();
+        }
+
+        // 更新进度条
+        function updateProgress() {
+            const percentage = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `问题 ${currentQuestion + 1} / ${questions.length}`;
+        }
+
+        // 记录答案
+        function answerQuestion(answer) {
+            if (answer === 'yes') {
+                const scores = questions[currentQuestion].scores;
+                for (const nutrient in scores) {
+                    if (nutrient in userScores) {
+                        userScores[nutrient] += scores[nutrient];
+                    } else if (nutrient === "抗膳食纤维") {
+                        // 处理可能的笔误，"抗膳食纤维" 改为 "膳食纤维"
+                        userScores["膳食纤维"] += scores[nutrient];
+                    }
+                }
+            }
+
+            // 移动到下一个问题
+            currentQuestion++;
+            
+            // 检查是否还有问题
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                // 显示结果
+                showResults();
+            }
+        }
+
+        // 显示结果
+        function showResults() {
+            questionContainer.classList.add('hidden');
+            resultsContainer.style.display = 'block';
+            
+            resultItemsContainer.innerHTML = '';
+            const deficientNutrients = [];
+            
+            // 创建每个营养素的结果条目
+            for (const nutrient in userScores) {
+                const total = totalScores[nutrient];
+                const score = userScores[nutrient];
+                const percentage = total > 0 ? score / total : 0;
+                const status = percentage >= threshold ? "可能缺乏" : "正常";
+                
+                if (percentage >= threshold) {
+                    deficientNutrients.push(nutrient);
+                }
+                
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                
+                resultItem.innerHTML = `
+                    <div><strong>${nutrient}</strong>: 得分 ${score}/${total} (${Math.round(percentage * 100)}%)</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar ${percentage >= threshold ? 'deficient' : 'normal'}" style="width: 0%"></div>
+                    </div>
+                    <div class="result-text">
+                        <span>${status}</span>
+                        <span>${score}/${total}</span>
+                    </div>
+                `;
+                
+                resultItemsContainer.appendChild(resultItem);
+                
+                // 动画效果：延迟显示进度条
+                setTimeout(() => {
+                    resultItem.querySelector('.result-bar').style.width = `${percentage * 100}%`;
+                }, 100);
+            }
+            
+            // 显示总结
+            if (deficientNutrients.length > 0) {
+                summaryElement.innerHTML = `
+                    <h3>总结</h3>
+                    <p>根据自检结果，您可能缺乏以下营养素：${deficientNutrients.join(', ')}</p>
+                    <p>建议咨询营养师或医生获取专业建议哟~</p>
+                `;
+            } else {
+                summaryElement.innerHTML = `
+                    <h3>总结</h3>
+                    <p>根据自检结果，您的营养状况良好，没有明显的营养素缺乏迹象。继续保持嗷!</p>
+                `;
+            }
+        }
+
+        
+
+        const disclaimerModal = document.getElementById('disclaimer-modal');
+        const acceptBtn = document.getElementById('accept-btn');
+        // 显示声明弹窗，直到用户确认
+        function showDisclaimer() {
+            disclaimerModal.style.display = 'flex';
+            // 禁用背景滚动
+            document.body.style.overflow = 'hidden';
+        }
+        // 隐藏弹窗并开始测试
+        function hideDisclaimerAndStart() {
+            disclaimerModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            init();
+        }
+        // 添加确认按钮点击事件
+        acceptBtn.addEventListener('click', hideDisclaimerAndStart);
+        // 修改现有的初始化代码，确保页面加载时首先显示声明
+        document.addEventListener('DOMContentLoaded', function() {
+            showDisclaimer();
+        });
+        // 修改已有的init函数，确保重新开始测试时不再显示声明
+        function init() {
+            currentQuestion = 0;
+            for (const nutrient in userScores) {
+                userScores[nutrient] = 0;
+            }
+            showQuestion();
+            questionContainer.classList.remove('hidden');
+            resultsContainer.style.display = 'none';
+        }
+        
+
+        // 事件监听器
+        yesBtn.addEventListener('click', function() {
+            yesBtn.classList.add('selected');
+            noBtn.classList.add('unselected');
+            setTimeout(() => {
+                yesBtn.classList.remove('selected');
+                noBtn.classList.remove('unselected');
+                answerQuestion('yes');
+            }, 300);
+        });
+
+        noBtn.addEventListener('click', function() {
+            noBtn.classList.add('selected');
+            yesBtn.classList.add('unselected');
+            setTimeout(() => {
+                noBtn.classList.remove('selected');
+                yesBtn.classList.remove('unselected');
+                answerQuestion('no');
+            }, 300);
+        });
+
+        restartBtn.addEventListener('click', init);
+
+        // 添加键盘支持
+        document.addEventListener('keydown', function(e) {
+            if (questionContainer.classList.contains('hidden')) return;
+            
+            if (e.key.toUpperCase() === 'Y') {
+                yesBtn.click();
+            } else if (e.key.toUpperCase() === 'N') {
+                noBtn.click();
+            }
+        });
+
+        // 启动应用
+        init();
+    </script>
+</body>
+</html>
