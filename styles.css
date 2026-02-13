@@ -1,23 +1,456 @@
-@font-face {font-family: LatinModern;src: url('fonts/LatinModernMath.woff2') format('woff2');}
-@font-face {font-family: JBMono;src: url('fonts/JetBrainsMono-Light.woff2') format('woff2');}
-@font-face {font-family: SHSerif;src: url('fonts/SourceHanSerifCN-VF.otf.woff2') format('woff2');}
-body {font-family: SHSerif;font-weight: 400;quotes: '\"' '\"';}
-h1, h2, h3, h4, h5, h6, a, b {font-weight: 700;}
-a {text-decoration: none;}
-code {font-family: JBMono;color: white;background-color: black;font-variant-ligatures: none;}
-pre:has(> code) {background-color: black;}
-em {font-style: normal;font-family: Courier, KaiTi;}
-math {font-family: LatinModern, SHSerif;}
-mtext {font-weight: 400;}
-ms {font-family: JBMono;color: white;background-color: black;}
-.qed {text-align: right;}
-cite {font-style: normal;}
-.slide {break-inside: avoid;border: 2px solid black;width: 400px;height: 225px;}
-.label {break-inside: avoid;}
-.dialogue {width: 100%;border-top: 1.5px solid black;break-inside: avoid;}
-.law {width: 100%;border-top: 1.5px solid black;break-inside: avoid;}
-table.law blockquote {width: 60%;margin: auto;padding: 10px;border: 5px double black;}
-.leftd {width: 48%;}
-.middled {width: 15px;}
-.dialogue td {padding: 5px;text-align: left;vertical-align: top;}
-.dashed {border: 2.5px dashed white;}
+@font-face {
+  font-family: LatinModern;
+  src: url("fonts/LatinModernMath.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: JBMono;
+  src: url("fonts/JetBrainsMono-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: SHSerif;
+  src: url("fonts/SourceHanSerifCN-VF.otf.woff2") format("woff2");
+}
+
+:root {
+  --bg: #f7f7f4;
+  --surface: #ffffff;
+  --text: #14171a;
+  --muted: #5d6771;
+  --accent: #236a8b;
+  --line: #e7eaee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-weight: 400;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  letter-spacing: 0.003em;
+  quotes: '"' '"';
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.8rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(1.7rem, 3.8vw, 2.8rem);
+  font-weight: 680;
+}
+
+h2 {
+  font-size: clamp(1.16rem, 1.9vw, 1.42rem);
+  font-weight: 620;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1.1rem;
+}
+
+.site-shell {
+  width: min(860px, calc(100% - 2.4rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(247, 247, 244, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding: 0.95rem 0;
+}
+
+.top-nav a {
+  color: var(--muted);
+  font-size: 0.93rem;
+  font-weight: 560;
+  padding: 0.15rem 0;
+}
+
+.top-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.site-main {
+  padding: 3.4rem 0 4rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 290px);
+  gap: 2.3rem;
+  align-items: start;
+  margin-bottom: 3.2rem;
+}
+
+.hero-copy {
+  max-width: 58ch;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 560;
+  margin-bottom: 0.8rem;
+}
+
+.hero-name {
+  margin-bottom: 1rem;
+}
+
+.name-latin {
+  display: block;
+  font-size: clamp(1rem, 1.7vw, 1.32rem);
+  color: var(--muted);
+  font-weight: 520;
+  letter-spacing: 0.03em;
+  margin-top: 0.35rem;
+}
+
+.role-line {
+  font-size: clamp(1rem, 1.1vw, 1.08rem);
+  max-width: 50ch;
+  margin-bottom: 1rem;
+}
+
+.hero-summary {
+  color: var(--muted);
+  font-size: 1.02rem;
+  max-width: 54ch;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.8rem 0 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.52rem 1rem;
+  font-weight: 560;
+  font-size: 0.95rem;
+}
+
+.btn:hover,
+.btn:focus {
+  text-decoration: none;
+  border-color: #b8ccd7;
+}
+
+.btn-primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: #ffffff;
+}
+
+.profile-wrap {
+  margin: 0;
+}
+
+.profile-photo {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, #f1f4f7, #e8edf2);
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.quick-links li {
+  margin: 0;
+}
+
+.section-block {
+  padding-top: 1.5rem;
+  margin-bottom: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.section-block p {
+  max-width: 66ch;
+}
+
+.glance-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.glance-list li {
+  margin-bottom: 0.7rem;
+}
+
+.info-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.9rem;
+}
+
+.section-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.section-links a {
+  font-weight: 560;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  padding: 1.1rem 0 2.2rem;
+  font-size: 0.92rem;
+}
+
+.page-header {
+  margin-bottom: 1.7rem;
+}
+
+.page-header p {
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.page-section {
+  margin-bottom: 1.6rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+main ul {
+  padding-left: 1.2rem;
+}
+
+main li {
+  margin-bottom: 0.38rem;
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list li {
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+  margin-bottom: 0.6rem;
+}
+
+.post-date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stack-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stack-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.stack-list li:last-child {
+  border-bottom: 0;
+}
+
+.item-title {
+  font-weight: 600;
+}
+
+.item-note {
+  display: block;
+  color: var(--muted);
+  font-size: 0.96rem;
+  margin-top: 0.2rem;
+}
+
+.footer-links {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+}
+
+code {
+  font-family: JBMono, Consolas, "Courier New", monospace;
+  color: #ffffff;
+  background-color: #000000;
+  font-variant-ligatures: none;
+}
+
+pre:has(> code) {
+  background-color: #000000;
+}
+
+em {
+  font-style: normal;
+  font-family: Courier, KaiTi;
+}
+
+math {
+  font-family: LatinModern, SHSerif;
+}
+
+mtext {
+  font-weight: 400;
+}
+
+ms {
+  font-family: JBMono, Consolas, "Courier New", monospace;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.qed {
+  text-align: right;
+}
+
+cite {
+  font-style: normal;
+}
+
+.slide {
+  break-inside: avoid;
+  border: 2px solid #000000;
+  width: 400px;
+  height: 225px;
+}
+
+.label {
+  break-inside: avoid;
+}
+
+.dialogue {
+  width: 100%;
+  border-top: 1.5px solid #000000;
+  break-inside: avoid;
+}
+
+.law {
+  width: 100%;
+  border-top: 1.5px solid #000000;
+  break-inside: avoid;
+}
+
+table.law blockquote {
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+  border: 5px double #000000;
+}
+
+.leftd {
+  width: 48%;
+}
+
+.middled {
+  width: 15px;
+}
+
+.dialogue td {
+  padding: 5px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.dashed {
+  border: 2.5px dashed #ffffff;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    width: min(920px, calc(100% - 1.5rem));
+  }
+
+  .site-main {
+    padding: 2.5rem 0 2.8rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2.1rem;
+  }
+
+  .profile-photo {
+    max-width: 240px;
+    margin-left: 0;
+  }
+
+  .info-columns {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .top-nav {
+    gap: 0.4rem 0.9rem;
+  }
+}

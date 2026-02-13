@@ -1,108 +1,121 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>施秉佚</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>施秉佚 SHI Bingyi | Homepage</title>
     <link href="styles.css" rel="stylesheet" />
-    <style>
-      .category-header {
-        background-color: #a9a9a9;
-        text-align: center;
-        padding: 5px;
-        font-weight: bold;
-      }
-    </style>
   </head>
-
   <body>
-    <h1>施秉佚 <a href="rss.xml">RSS</a> <a href="intro.html">网站介绍</a></h1>
-    <p>
-      个人简历,文章,笔记和代码集. Unless specified otherwise, all the code and
-      the documentation on this site is in public domain.
-    </p>
-    <table width="100%">
-      <!-- 学术资料分类 -->
-      <tr>
-        <td colspan="2" class="category-header">—— 个人资料 ——</td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="notes/cv.pdf">个人简历</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="papers.html">论文和文章</a></h2>
-        </td>
-      </tr>
+    <header class="site-header">
+      <div class="site-shell">
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="research.html">Research</a>
+          <a href="publications.html">Publications</a>
+          <a href="teaching.html">Teaching</a>
+          <a href="notes.html">Notes</a>
+          <a href="blog.html">Blog</a>
+          <a href="cv.html">CV</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-      <!-- 学习笔记分类 -->
-      <tr>
-        <td colspan="2" class="category-header">—— 学习笔记 ——</td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="probstat.html">概率统计笔记</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="shufengaodai.html">数分高代笔记</a></h2>
-        </td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="programming.html">关于程序设计的思考</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2>
-            <a href="denotational_semantics_notes.html">指称语义学讲义翻译</a>
-          </h2>
-        </td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="hoffman.html">线性代数Hoffman &amp; Kunze</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="little_typer.html">The Little Typer翻译</a></h2>
-        </td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="jilu.html">记录</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2>
-            <a href="notes/pl.pdf">编程语言</a>:
-            <a href="notes/pl.zip">代码集</a>
-          </h2>
-        </td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="useless.html">未归档笔记</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="smathml_everything.html">SMathML</a></h2>
-        </td>
-      </tr>
+    <main class="site-shell site-main">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Currently at Nankai University.</p>
+          <h1 class="hero-name">
+            施秉佚
+            <span class="name-latin">SHI Bingyi</span>
+          </h1>
+          <p class="role-line">
+            Bachelor Student in Statistics at Nankai University (2022-2026, expected);
+            incoming Ph.D. student in Economics at CUHK-Shenzhen (starting 2026,
+            expected).
+          </p>
+          <p class="hero-summary">
+            I focus on statistics and economics, especially how quantitative methods can
+            support clear modeling and empirical reasoning. This site presents a concise
+            overview of research, publications, and selected notes.
+          </p>
+          <p class="cta-row">
+            <a class="btn btn-primary" href="research.html">Research</a>
+            <a class="btn" href="publications.html">Publications</a>
+            <a class="btn" href="notes/cv.pdf">CV</a>
+          </p>
+          <ul class="quick-links">
+            <li><a href="mailto:shibingyi@mail.nankai.edu.cn">Email</a></li>
+            <li><a href="https://github.com/SBY7219/">GitHub</a></li>
+            <li><a href="https://x.com/shibingyi1006">X (@shibingyi1006)</a></li>
+            <li><a href="rss.xml">RSS</a></li>
+            <li><a href="connections.html">Links</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <figure class="profile-wrap">
+          <img
+            src="img/profile.jpg"
+            alt="Profile photo placeholder"
+            class="profile-photo"
+          />
+        </figure>
+      </section>
 
-      <!-- 资源链接分类 -->
-      <tr>
-        <td colspan="2" class="category-header">—— 资源与链接 ——</td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="books.html">书籍推荐</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="ilinks.html">好玩的链接</a></h2>
-        </td>
-      </tr>
-      <tr>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="links.html">博客链接</a></h2>
-        </td>
-        <td style="background-color: #d3d3d3">
-          <h2><a href="huyan.html">QUOTES胡言</a></h2>
-        </td>
-      </tr>
-    </table>
+      <section class="section-block">
+        <h2>At a Glance</h2>
+        <p>
+          Currently at Nankai University. Academic path and transition timeline:
+        </p>
+        <ul class="glance-list">
+          <li>
+            Shanghai Foreign Language School Affiliated to SISU, High School, 2015-2022
+          </li>
+          <li>B.Sc. in Statistics, Nankai University, 2022-2026 (expected)</li>
+          <li>
+            Ph.D. in Economics (incoming), CUHK-Shenzhen, starting 2026 (expected)
+          </li>
+        </ul>
+      </section>
+
+      <section class="section-block info-columns">
+        <article>
+          <h2>Research and Publications</h2>
+          <p>
+            Current work and formal outputs in statistics and economics.
+          </p>
+          <p class="section-links">
+            <a href="research.html">Explore Research</a>
+            <a href="publications.html">View Publications</a>
+          </p>
+        </article>
+        <article>
+          <h2>Notes and Writing</h2>
+          <p>
+            Selected reading notes and short writing updates.
+          </p>
+          <p class="section-links">
+            <a href="notes.html">Browse Notes</a>
+            <a href="blog.html">Read Blog</a>
+          </p>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <h2>Links and Friends</h2>
+        <p>A curated set of personal links, colleagues, and external resources.</p>
+        <p class="section-links">
+          <a href="connections.html">Open Links Hub</a>
+          <a href="links.html">Friends</a>
+          <a href="ilinks.html">Curated Links</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-shell site-footer">
+      <p>Static site in plain HTML and CSS, served via GitHub Pages.</p>
+      <p class="footer-links"><a href="connections.html">Links and Friends</a></p>
+    </footer>
   </body>
 </html>
