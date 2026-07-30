@@ -22,7 +22,9 @@
   --rule: #d8d3c7;
   --highlight: rgba(23, 86, 107, 0.075);
   --white: #ffffff;
-  --panel-width: 472px;
+  --panel-width: 33.333333vw;
+  --panel-padding: 34px;
+  --index-indent: 30px;
   --font-body: "Segoe UI Variable Text", Aptos, "Segoe UI", "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-display: "Segoe UI Variable Display", "Aptos Display", "Segoe UI",
@@ -134,8 +136,7 @@ p {
 }
 
 .edge-spacer {
-  flex: 1 0 max(0px, calc((100vw - (4 * var(--panel-width))) / 2));
-  min-width: 0;
+  display: none;
 }
 
 .edge-spacer-start {
@@ -155,6 +156,7 @@ p {
   background: var(--paper-soft);
   overscroll-behavior-y: contain;
   scroll-snap-align: start;
+  scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--rule) transparent;
   -webkit-overflow-scrolling: touch;
@@ -173,7 +175,7 @@ p {
 }
 
 .panel-inner {
-  padding: 40px;
+  padding: var(--panel-padding);
 }
 
 .intro-copy {
@@ -181,15 +183,17 @@ p {
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--rule) transparent;
 }
 
 .identity-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 88px;
-  gap: 1.25rem;
-  align-items: start;
+  grid-template-areas: "portrait name";
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
   margin-bottom: 2.15rem;
 }
 
@@ -200,6 +204,10 @@ p {
   font-weight: 720;
   line-height: 1.05;
   letter-spacing: -0.03em;
+}
+
+.identity-header h1 {
+  grid-area: name;
 }
 
 .identity-header h1 a {
@@ -216,9 +224,10 @@ p {
 }
 
 .intro-portrait {
+  grid-area: portrait;
   display: block;
-  width: 88px;
-  height: 112px;
+  width: 72px;
+  height: 92px;
   object-fit: cover;
   object-position: center top;
   border: 1px solid var(--rule);
@@ -237,7 +246,7 @@ p {
 
 .intro-controls {
   flex: 0 0 auto;
-  padding: 22px 40px 26px;
+  padding: 22px var(--panel-padding) 26px;
   border-top: 1px solid var(--rule);
   background: var(--paper);
 }
@@ -297,8 +306,8 @@ p {
 }
 
 .major-projects {
-  margin-right: -40px;
-  margin-left: -40px;
+  margin-right: calc(-1 * var(--panel-padding));
+  margin-left: calc(-1 * var(--panel-padding));
 }
 
 .project-card {
@@ -372,9 +381,10 @@ p {
   min-height: inherit;
   flex-direction: column;
   justify-content: center;
-  padding: 30px 40px;
+  padding: 30px var(--panel-padding);
   color: var(--ink);
   text-decoration: none;
+  transition: background-color 170ms ease-out;
 }
 
 .project-card h3,
@@ -407,7 +417,7 @@ p {
 
 .index-group {
   margin-top: 2.15rem;
-  padding-left: 32px;
+  padding-left: var(--index-indent);
 }
 
 .index-group > h3 {
@@ -430,22 +440,34 @@ p {
 .text-index li::before {
   position: absolute;
   z-index: 0;
-  top: -8px;
-  bottom: -8px;
-  left: -72px;
-  width: var(--panel-width);
+  top: -7px;
+  right: calc(-1 * var(--panel-padding));
+  bottom: -7px;
+  left: calc(-1 * (var(--panel-padding) + var(--index-indent)));
   content: "";
   pointer-events: none;
-  transition: background-color 100ms linear;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 86, 107, 0.1) 0%,
+    rgba(23, 86, 107, 0.055) 68%,
+    rgba(23, 86, 107, 0) 100%
+  );
+  transform: scaleX(0.985);
+  transform-origin: left center;
+  transition:
+    opacity 180ms ease-out,
+    transform 220ms ease-out;
 }
 
 .index-group-standalone .text-index li::before {
-  left: -40px;
+  left: calc(-1 * var(--panel-padding));
 }
 
 .text-index li:hover::before,
 .text-index li:focus-within::before {
-  background: var(--highlight);
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .text-index a {
@@ -455,6 +477,13 @@ p {
   padding: 0.12rem 0 0.9rem;
   color: var(--ink);
   text-decoration: none;
+  transition: color 160ms ease-out;
+}
+
+.text-index a:hover,
+.text-index a:focus-visible {
+  color: var(--accent);
+  outline: 0;
 }
 
 .text-index time {
@@ -688,8 +717,27 @@ table.law blockquote {
   border: 2.5px dashed #ffffff;
 }
 
+@media (min-width: 1280px) {
+  :root {
+    --panel-width: 25vw;
+    --panel-padding: 30px;
+    --index-indent: 26px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --panel-width: 20vw;
+    --panel-padding: clamp(26px, 1.8vw, 36px);
+    --index-indent: clamp(22px, 1.5vw, 30px);
+  }
+}
+
 @media (max-width: 1023px) {
   .home-page {
+    --panel-width: 100%;
+    --panel-padding: 24px;
+    --index-indent: 24px;
     height: auto;
     min-height: 100%;
     overflow: auto;
@@ -729,7 +777,7 @@ table.law blockquote {
   }
 
   .identity-header {
-    grid-template-columns: minmax(0, 1fr) 76px;
+    grid-template-columns: 70px minmax(0, 1fr);
     margin-bottom: 1.45rem;
   }
 
@@ -740,8 +788,8 @@ table.law blockquote {
   }
 
   .intro-portrait {
-    width: 76px;
-    height: 96px;
+    width: 70px;
+    height: 90px;
   }
 
   .intro-controls {
@@ -770,14 +818,6 @@ table.law blockquote {
     padding-left: 0;
   }
 
-  .text-index li::before {
-    left: -48px;
-    width: calc(100% + 72px);
-  }
-
-  .index-group-standalone .text-index li::before {
-    left: -24px;
-  }
 }
 
 @media (max-width: 760px) {
