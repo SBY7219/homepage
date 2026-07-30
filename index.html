@@ -3,119 +3,293 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>施秉佚 SHI Bingyi | Homepage</title>
+    <meta
+      name="description"
+      content="SHI Bingyi studies statistics and economics. Explore research, publications, working notes, and writing."
+    />
+    <title>施秉佚 SHI Bingyi</title>
     <link href="styles.css" rel="stylesheet" />
   </head>
-  <body>
-    <header class="site-header">
-      <div class="site-shell">
-        <nav class="top-nav" aria-label="Main navigation">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="research.html">Research</a>
-          <a href="publications.html">Publications</a>
-          <a href="teaching.html">Teaching</a>
-          <a href="notes.html">Notes</a>
-          <a href="blog.html">Blog</a>
-          <a href="cv.html">CV</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
+  <body class="home-page">
+    <a class="skip-link" href="#research">Skip to research</a>
 
-    <main class="site-shell site-main">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Currently at Nankai University.</p>
-          <h1 class="hero-name">
-            施秉佚
-            <span class="name-latin">SHI Bingyi</span>
-          </h1>
-          <p class="role-line">
-            Bachelor Student in Statistics at Nankai University (2022-2026, expected);
-            incoming Ph.D. student in Economics at CUHK-Shenzhen (starting 2026,
-            expected).
+    <main class="horizontal-site">
+      <div class="edge-spacer edge-spacer-start" aria-hidden="true"></div>
+
+      <section class="home-panel intro-panel" id="home" aria-labelledby="site-name">
+        <div class="panel-inner intro-copy">
+          <header class="identity-header">
+            <h1 id="site-name">
+              <a href="index.html">
+                施秉佚
+                <span>SHI Bingyi</span>
+              </a>
+            </h1>
+            <img
+              src="img/profile_pic.png"
+              alt="Portrait of SHI Bingyi"
+              class="intro-portrait"
+            />
+          </header>
+
+          <p>
+            I am a student of statistics and economics, interested in how probability,
+            statistical inference, and econometric reasoning help us make sense of
+            empirical questions.
           </p>
-          <p class="hero-summary">
-            I focus on statistics and economics, especially how quantitative methods can
-            support clear modeling and empirical reasoning. This site presents a concise
-            overview of research, publications, and selected notes.
+          <p>
+            I am completing a B.Sc. in Statistics at Nankai University and will begin a
+            Ph.D. in Economics at The Chinese University of Hong Kong, Shenzhen in 2026.
           </p>
-          <p class="cta-row">
-            <a class="btn btn-primary" href="research.html">Research</a>
-            <a class="btn" href="publications.html">Publications</a>
-            <a class="btn" href="notes/cv.pdf">CV</a>
+          <p>
+            This site collects my research, formal writing, and working notes in
+            mathematics, statistics, economics, logic, and computation.
           </p>
-          <ul class="quick-links">
-            <li><a href="mailto:shibingyi@mail.nankai.edu.cn">Email</a></li>
-            <li><a href="https://github.com/SBY7219/">GitHub</a></li>
-            <li><a href="https://x.com/shibingyi1006">X (@shibingyi1006)</a></li>
-            <li><a href="rss.xml">RSS</a></li>
-            <li><a href="connections.html">Links</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
         </div>
-        <figure class="profile-wrap">
-          <img
-            src="img/profile_pic.png"
-            alt="Profile image for SHI Bingyi"
-            class="profile-photo"
-          />
-        </figure>
+
+        <div class="intro-controls">
+          <nav class="home-nav" aria-label="Main navigation">
+            <a href="research.html">Research</a>
+            <a href="publications.html">Publications</a>
+            <a href="teaching.html">Teaching</a>
+            <a href="notes.html">Notes</a>
+            <a href="blog.html">Blog</a>
+            <a href="cv.html">CV</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="contact-strip">
+            <a href="mailto:shibingyi@mail.nankai.edu.cn">Email</a>
+            <a href="https://github.com/SBY7219/">GitHub</a>
+            <a href="https://x.com/shibingyi1006">X</a>
+            <a href="rss.xml">RSS</a>
+          </div>
+        </div>
       </section>
 
-      <section class="section-block">
-        <h2>At a Glance</h2>
-        <p>
-          Currently at Nankai University. Academic path and transition timeline:
-        </p>
-        <ul class="glance-list">
-          <li>
-            Shanghai Foreign Language School Affiliated to SISU, High School, 2015-2022
-          </li>
-          <li>B.Sc. in Statistics, Nankai University, 2022-2026 (expected)</li>
-          <li>
-            Ph.D. in Economics (incoming), CUHK-Shenzhen, starting 2026 (expected)
-          </li>
-        </ul>
+      <section class="home-panel" id="research" aria-labelledby="research-heading">
+        <div class="panel-inner">
+          <header class="panel-heading">
+            <h2 id="research-heading">Projects:<br />statistics &amp; economics</h2>
+            <p>
+              Statistical foundations, economic questions, and quantitative methods.
+            </p>
+          </header>
+
+          <ol class="major-projects">
+            <li class="project-card project-card-inference">
+              <a href="research.html">
+                <h3>Statistical inference and probabilistic modeling</h3>
+                <p>Foundations for clear quantitative reasoning</p>
+              </a>
+            </li>
+            <li class="project-card project-card-causal">
+              <a href="notes/fed_prob%20%28for%20homepage%29.pdf">
+                <h3>Federated causal structure inference</h3>
+                <p>A current draft on causal discovery</p>
+              </a>
+            </li>
+            <li class="project-card project-card-blocks">
+              <a href="notes/independent_blocks_technique.pdf">
+                <h3>Independent blocks technique</h3>
+                <p>Technical writing on a probabilistic method</p>
+              </a>
+            </li>
+          </ol>
+
+          <section class="index-group" aria-labelledby="more-work-heading">
+            <h3 id="more-work-heading">More work</h3>
+            <ol class="text-index">
+              <li>
+                <a href="publications.html">
+                  <h4>Publications and technical writing</h4>
+                  <p>Papers, drafts, and selected formal work</p>
+                </a>
+              </li>
+              <li>
+                <a href="research.html">
+                  <h4>Current research interests</h4>
+                  <p>Statistics, econometrics, and reproducible analysis</p>
+                </a>
+              </li>
+            </ol>
+          </section>
+
+          <section class="index-group" aria-labelledby="working-notes-heading">
+            <h3 id="working-notes-heading">Working notes</h3>
+            <ol class="text-index">
+              <li>
+                <a href="probstat.html">
+                  <h4>Probability and statistics</h4>
+                  <p>Concepts, derivations, and study notes</p>
+                </a>
+              </li>
+              <li>
+                <a href="measure.html">
+                  <h4>Measure theory</h4>
+                  <p>Foundations of integration and probability</p>
+                </a>
+              </li>
+              <li>
+                <a href="linear_algebra.html">
+                  <h4>Linear algebra</h4>
+                  <p>Structures and tools used throughout quantitative work</p>
+                </a>
+              </li>
+            </ol>
+          </section>
+        </div>
       </section>
 
-      <section class="section-block info-columns">
-        <article>
-          <h2>Research and Publications</h2>
-          <p>
-            Current work and formal outputs in statistics and economics.
-          </p>
-          <p class="section-links">
-            <a href="research.html">Explore Research</a>
-            <a href="publications.html">View Publications</a>
-          </p>
-        </article>
-        <article>
-          <h2>Notes and Writing</h2>
-          <p>
-            Selected reading notes and short writing updates.
-          </p>
-          <p class="section-links">
-            <a href="notes.html">Browse Notes</a>
-            <a href="blog.html">Read Blog</a>
-          </p>
-        </article>
+      <section class="home-panel" id="writing" aria-labelledby="writing-heading">
+        <div class="panel-inner">
+          <header class="panel-heading">
+            <h2 id="writing-heading">Writing from<br />the notebook</h2>
+            <p>
+              Essays, updates, and ideas that are more provisional than formal papers.
+            </p>
+          </header>
+
+          <section class="index-group index-group-standalone" aria-labelledby="recent-heading">
+            <h3 id="recent-heading" class="visually-hidden">Recent writing</h3>
+            <ol class="text-index text-index-roomy">
+              <li>
+                <a href="blog/2026-02-notes-and-writing-plan.html">
+                  <h4>Notes and writing plan</h4>
+                  <p>Directions for developing this site as a place to think in public</p>
+                  <time datetime="2026-02-13">February 2026</time>
+                </a>
+              </li>
+              <li>
+                <a href="blog/2026-02-first-post.html">
+                  <h4>First post</h4>
+                  <p>An introduction to the website and its purpose</p>
+                  <time datetime="2026-02-13">February 2026</time>
+                </a>
+              </li>
+              <li>
+                <a href="programming.html">
+                  <h4>Thoughts on programming</h4>
+                  <p>Notes on languages, abstraction, and computation</p>
+                </a>
+              </li>
+              <li>
+                <a href="logic.html">
+                  <h4>Logic study guide</h4>
+                  <p>A route through proof, semantics, and formal reasoning</p>
+                </a>
+              </li>
+            </ol>
+          </section>
+
+          <p class="panel-action"><a href="blog.html">All writing</a></p>
+        </div>
       </section>
 
-      <section class="section-block">
-        <h2>Links and Friends</h2>
-        <p>A curated set of personal links, colleagues, and external resources.</p>
-        <p class="section-links">
-          <a href="connections.html">Open Links Hub</a>
-          <a href="links.html">Friends</a>
-          <a href="ilinks.html">Curated Links</a>
-        </p>
+      <section class="home-panel" id="notes" aria-labelledby="notes-heading">
+        <div class="panel-inner">
+          <header class="panel-heading">
+            <h2 id="notes-heading">Notes:<br />a working library</h2>
+            <p>
+              Study materials and evolving references, organized by subject rather than
+              chronology.
+            </p>
+          </header>
+
+          <ol class="major-projects compact-projects">
+            <li class="project-card project-card-math">
+              <a href="notes.html#mathematics">
+                <h3>Mathematics and statistics</h3>
+                <p>Analysis, probability, inference, and linear algebra</p>
+              </a>
+            </li>
+            <li class="project-card project-card-computation">
+              <a href="notes.html#programming">
+                <h3>Programming languages and semantics</h3>
+                <p>Language design, macros, types, and implementation</p>
+              </a>
+            </li>
+          </ol>
+
+          <section class="index-group" aria-labelledby="logic-notes-heading">
+            <h3 id="logic-notes-heading">Logic and foundations</h3>
+            <ol class="text-index">
+              <li>
+                <a href="proof_theory.html">
+                  <h4>Proof theory</h4>
+                  <p>Proofs, calculi, and logical complexity</p>
+                </a>
+              </li>
+              <li>
+                <a href="cat_awodey.html">
+                  <h4>Category theory</h4>
+                  <p>Categorical methods and structural mathematics</p>
+                </a>
+              </li>
+              <li>
+                <a href="hott.html">
+                  <h4>Homotopy type theory</h4>
+                  <p>Types, spaces, and constructive foundations</p>
+                </a>
+              </li>
+            </ol>
+          </section>
+
+          <p class="panel-action"><a href="notes.html">Browse the full notes index</a></p>
+        </div>
       </section>
+
+      <section class="home-panel" id="more" aria-labelledby="more-heading">
+        <div class="panel-inner">
+          <header class="panel-heading">
+            <h2 id="more-heading">More,<br />misc, meta</h2>
+            <p>Teaching, background, contact details, and useful paths through the site.</p>
+          </header>
+
+          <section class="index-group index-group-standalone" aria-labelledby="academic-heading">
+            <h3 id="academic-heading">Academic</h3>
+            <ol class="text-index text-index-roomy">
+              <li>
+                <a href="teaching.html">
+                  <h4>Teaching</h4>
+                  <p>Instructional approach and future course materials</p>
+                </a>
+              </li>
+              <li>
+                <a href="notes/cv.pdf">
+                  <h4>Curriculum vitae</h4>
+                  <p>Education, research, and academic experience</p>
+                </a>
+              </li>
+              <li>
+                <a href="connections.html">
+                  <h4>Links and friends</h4>
+                  <p>People, websites, and resources worth revisiting</p>
+                </a>
+              </li>
+            </ol>
+          </section>
+
+          <section class="index-group" aria-labelledby="contact-heading">
+            <h3 id="contact-heading">Contact</h3>
+            <ol class="text-index">
+              <li>
+                <a href="mailto:shibingyi@mail.nankai.edu.cn">
+                  <h4>Email</h4>
+                  <p>shibingyi@mail.nankai.edu.cn</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/SBY7219/">
+                  <h4>GitHub</h4>
+                  <p>Code and public repositories</p>
+                </a>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <div class="edge-spacer edge-spacer-end" aria-hidden="true"></div>
     </main>
-
-    <footer class="site-shell site-footer">
-      <p>Static site in plain HTML and CSS, served via GitHub Pages.</p>
-      <p class="footer-links"><a href="connections.html">Links and Friends</a></p>
-    </footer>
   </body>
 </html>
