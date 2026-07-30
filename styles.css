@@ -14,15 +14,19 @@
 }
 
 :root {
-  --paper: #fff3f1;
-  --paper-soft: #fff9f7;
-  --ink: #3c334d;
-  --accent: #3b0aff;
-  --accent-soft: #766afb;
-  --rule: #ffdd99;
-  --highlight: rgba(255, 221, 153, 0.2);
+  --paper: #f1efe8;
+  --paper-soft: #fbfaf6;
+  --ink: #25323a;
+  --accent: #17566b;
+  --accent-soft: #65747b;
+  --rule: #d8d3c7;
+  --highlight: rgba(23, 86, 107, 0.075);
   --white: #ffffff;
-  --panel-width: 459px;
+  --panel-width: 472px;
+  --font-body: "Segoe UI Variable Text", Aptos, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-display: "Segoe UI Variable Display", "Aptos Display", "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
 * {
@@ -42,18 +46,19 @@ html {
 body {
   background: var(--paper-soft);
   color: var(--ink);
-  font-family: "Avenir Next", Avenir, "Segoe UI", "PingFang SC",
-    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  font-size: 1.08rem;
+  font-family: var(--font-body);
+  font-size: 1.04rem;
   font-weight: 400;
-  line-height: 1.72;
-  letter-spacing: 0.002em;
+  line-height: 1.65;
+  letter-spacing: 0;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
   quotes: '"' '"';
 }
 
 a {
   color: var(--accent);
-  text-decoration-color: rgba(59, 10, 255, 0.35);
+  text-decoration-color: rgba(23, 86, 107, 0.36);
   text-underline-offset: 0.14em;
 }
 
@@ -70,10 +75,10 @@ h4,
 h5,
 h6 {
   color: var(--accent);
-  font-family: "Avenir Next", Avenir, Futura, "Segoe UI", "PingFang SC",
-    sans-serif;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-family: var(--font-display);
+  line-height: 1.12;
+  letter-spacing: -0.014em;
+  text-wrap: balance;
 }
 
 p {
@@ -112,9 +117,9 @@ p {
   height: 100vh;
   overflow: hidden;
   background: var(--paper);
-  color: var(--accent);
-  font-size: 22px;
-  line-height: 1.45;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.56;
 }
 
 .horizontal-site {
@@ -123,7 +128,7 @@ p {
   height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
-  overscroll-behavior-inline: contain;
+  overscroll-behavior-x: contain;
   scroll-snap-type: x proximity;
   scrollbar-color: var(--accent-soft) var(--paper);
 }
@@ -148,9 +153,11 @@ p {
   overflow-y: auto;
   border-left: 1px solid var(--rule);
   background: var(--paper-soft);
+  overscroll-behavior-y: contain;
   scroll-snap-align: start;
   scrollbar-width: thin;
   scrollbar-color: var(--rule) transparent;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home-panel:last-of-type {
@@ -161,30 +168,38 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
   background: var(--paper);
 }
 
 .panel-inner {
-  padding: 42px;
+  padding: 40px;
 }
 
 .intro-copy {
   flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
 }
 
 .identity-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 92px;
-  gap: 1.1rem;
+  grid-template-columns: minmax(0, 1fr) 88px;
+  gap: 1.25rem;
   align-items: start;
-  margin-bottom: 2rem;
+  margin-bottom: 2.15rem;
 }
 
 .identity-header h1,
 .panel-heading h2 {
   margin: 0;
-  font-size: 2.12rem;
-  font-weight: 800;
+  font-size: 2.18rem;
+  font-weight: 720;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .identity-header h1 a {
@@ -194,16 +209,16 @@ p {
 
 .identity-header h1 span {
   display: block;
-  margin-top: 0.22em;
-  font-size: 0.48em;
-  font-weight: 750;
-  letter-spacing: 0.015em;
+  margin-top: 0.35em;
+  font-size: 0.43em;
+  font-weight: 620;
+  letter-spacing: 0.055em;
 }
 
 .intro-portrait {
   display: block;
-  width: 92px;
-  height: 116px;
+  width: 88px;
+  height: 112px;
   object-fit: cover;
   object-position: center top;
   border: 1px solid var(--rule);
@@ -213,13 +228,18 @@ p {
 
 .intro-copy p,
 .panel-heading p {
-  margin-bottom: 1.35rem;
+  max-width: 35ch;
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.58;
 }
 
 .intro-controls {
   flex: 0 0 auto;
-  padding: 24px 42px 30px;
+  padding: 22px 40px 26px;
   border-top: 1px solid var(--rule);
+  background: var(--paper);
 }
 
 .home-nav,
@@ -230,16 +250,17 @@ p {
 }
 
 .home-nav {
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.8rem;
 }
 
 .home-nav a,
 .contact-strip a,
 .panel-action a {
   color: var(--accent);
-  font-size: 0.82rem;
-  font-variant: small-caps;
-  letter-spacing: 0.03em;
+  font-size: 0.69rem;
+  font-weight: 680;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -257,15 +278,15 @@ p {
 }
 
 .panel-heading {
-  margin-bottom: 1.45rem;
+  margin-bottom: 1.6rem;
 }
 
 .panel-heading h2 {
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.3rem;
 }
 
 .panel-heading p {
-  color: var(--accent);
+  color: var(--ink);
 }
 
 .major-projects,
@@ -276,13 +297,13 @@ p {
 }
 
 .major-projects {
-  margin-right: -42px;
-  margin-left: -42px;
+  margin-right: -40px;
+  margin-left: -40px;
 }
 
 .project-card {
   position: relative;
-  min-height: 168px;
+  min-height: 154px;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.58);
   background-color: #ece7ff;
@@ -296,25 +317,25 @@ p {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(255, 249, 247, 0.96) 0%,
-    rgba(255, 249, 247, 0.8) 54%,
-    rgba(255, 249, 247, 0.1) 100%
+    rgba(251, 250, 246, 0.97) 0%,
+    rgba(251, 250, 246, 0.83) 55%,
+    rgba(251, 250, 246, 0.08) 100%
   );
 }
 
 .project-card-inference {
   background-image:
-    radial-gradient(circle at 82% 34%, rgba(59, 10, 255, 0.65) 0 7%, transparent 8%),
-    radial-gradient(circle at 69% 72%, rgba(255, 191, 116, 0.78) 0 12%, transparent 13%),
-    linear-gradient(132deg, #ddd5ff 0%, #f4d6ec 55%, #ffdcae 100%);
+    radial-gradient(circle at 82% 34%, rgba(23, 86, 107, 0.68) 0 7%, transparent 8%),
+    radial-gradient(circle at 69% 72%, rgba(214, 161, 92, 0.76) 0 12%, transparent 13%),
+    linear-gradient(132deg, #d6e4e5 0%, #e8ddd7 55%, #ead4af 100%);
 }
 
 .project-card-causal {
   background-image:
-    linear-gradient(30deg, transparent 46%, rgba(59, 10, 255, 0.24) 47% 50%, transparent 51%),
-    linear-gradient(150deg, transparent 46%, rgba(59, 10, 255, 0.18) 47% 50%, transparent 51%),
-    radial-gradient(circle at 78% 48%, #ffcf83 0 9%, transparent 10%),
-    linear-gradient(120deg, #d7f0ec, #ece0ff);
+    linear-gradient(30deg, transparent 46%, rgba(23, 86, 107, 0.25) 47% 50%, transparent 51%),
+    linear-gradient(150deg, transparent 46%, rgba(23, 86, 107, 0.17) 47% 50%, transparent 51%),
+    radial-gradient(circle at 78% 48%, #d9ae6d 0 9%, transparent 10%),
+    linear-gradient(120deg, #d7e7e2, #dce4e9);
   background-size: 70px 70px, 70px 70px, auto, auto;
 }
 
@@ -323,25 +344,25 @@ p {
     repeating-linear-gradient(
       90deg,
       transparent 0 18px,
-      rgba(59, 10, 255, 0.16) 19px 21px
+      rgba(23, 86, 107, 0.16) 19px 21px
     ),
-    linear-gradient(140deg, #ffe9b9, #e0d9ff 70%);
+    linear-gradient(140deg, #e9dcc0, #d8e3e7 70%);
 }
 
 .project-card-math {
   background-image:
-    radial-gradient(ellipse at 84% 48%, transparent 0 15%, rgba(59, 10, 255, 0.18) 16% 18%, transparent 19% 30%, rgba(59, 10, 255, 0.12) 31% 33%, transparent 34%),
-    linear-gradient(135deg, #fbd9de, #ddd9ff);
+    radial-gradient(ellipse at 84% 48%, transparent 0 15%, rgba(23, 86, 107, 0.18) 16% 18%, transparent 19% 30%, rgba(23, 86, 107, 0.12) 31% 33%, transparent 34%),
+    linear-gradient(135deg, #e8d9d2, #d8e3e6);
 }
 
 .project-card-computation {
   background-image:
     repeating-linear-gradient(
       135deg,
-      rgba(59, 10, 255, 0.13) 0 2px,
+      rgba(23, 86, 107, 0.13) 0 2px,
       transparent 2px 16px
     ),
-    linear-gradient(135deg, #d5eee5, #f8deb9);
+    linear-gradient(135deg, #d5e4df, #e9dcc2);
 }
 
 .project-card a {
@@ -351,8 +372,8 @@ p {
   min-height: inherit;
   flex-direction: column;
   justify-content: center;
-  padding: 32px 42px;
-  color: var(--accent);
+  padding: 30px 40px;
+  color: var(--ink);
   text-decoration: none;
 }
 
@@ -360,40 +381,41 @@ p {
 .text-index h4 {
   margin: 0 0 0.25rem;
   color: inherit;
-  font-size: 0.91rem;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 1.18;
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.23;
 }
 
 .project-card p,
 .text-index p {
   margin: 0;
-  color: var(--accent);
-  font-size: 0.77rem;
-  line-height: 1.22;
+  color: var(--accent-soft);
+  font-size: 0.78rem;
+  line-height: 1.32;
 }
 
 .project-card a:hover,
 .project-card a:focus-visible {
-  background: rgba(255, 221, 153, 0.16);
+  background: rgba(23, 86, 107, 0.06);
   outline: 0;
 }
 
 .compact-projects .project-card {
-  min-height: 150px;
+  min-height: 142px;
 }
 
 .index-group {
-  margin-top: 2rem;
-  padding-left: 31.5px;
+  margin-top: 2.15rem;
+  padding-left: 32px;
 }
 
 .index-group > h3 {
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.2rem;
   color: var(--accent);
-  font-size: 1.16rem;
-  font-weight: 800;
+  font-size: 1.08rem;
+  font-weight: 720;
+  letter-spacing: -0.015em;
 }
 
 .index-group-standalone {
@@ -410,7 +432,7 @@ p {
   z-index: 0;
   top: -8px;
   bottom: -8px;
-  left: -73.5px;
+  left: -72px;
   width: var(--panel-width);
   content: "";
   pointer-events: none;
@@ -418,7 +440,7 @@ p {
 }
 
 .index-group-standalone .text-index li::before {
-  left: -42px;
+  left: -40px;
 }
 
 .text-index li:hover::before,
@@ -430,8 +452,8 @@ p {
   position: relative;
   z-index: 1;
   display: block;
-  padding: 0.12rem 0 0.82rem;
-  color: var(--accent);
+  padding: 0.12rem 0 0.9rem;
+  color: var(--ink);
   text-decoration: none;
 }
 
@@ -443,7 +465,7 @@ p {
 }
 
 .text-index-roomy a {
-  padding-bottom: 1.15rem;
+  padding-bottom: 1.25rem;
 }
 
 .panel-action {
@@ -477,9 +499,10 @@ p {
 
 .top-nav a {
   color: var(--accent-soft);
-  font-size: 0.9rem;
-  font-variant: small-caps;
-  letter-spacing: 0.02em;
+  font-size: 0.74rem;
+  font-weight: 680;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -670,7 +693,7 @@ table.law blockquote {
     height: auto;
     min-height: 100%;
     overflow: auto;
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .horizontal-site {
@@ -690,17 +713,19 @@ table.law blockquote {
     width: 100%;
     height: auto;
     overflow: visible;
+    overscroll-behavior: auto;
     border-right: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
     scroll-snap-align: none;
   }
 
   .panel-inner {
-    padding: 32px 24px 38px;
+    padding: 34px 24px 40px;
   }
 
   .intro-copy {
     padding-bottom: 28px;
+    overflow: visible;
   }
 
   .identity-header {
@@ -710,8 +735,8 @@ table.law blockquote {
 
   .identity-header h1,
   .panel-heading h2 {
-    font-size: 1.4rem;
-    line-height: 1.15;
+    font-size: 1.72rem;
+    line-height: 1.08;
   }
 
   .intro-portrait {
