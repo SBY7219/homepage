@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title description">
+  <title id="title">Profile photo placeholder</title>
+  <desc id="description">A minimal placeholder bearing the initials SBY.</desc>
+  <rect width="640" height="800" fill="#f2f4f7"/>
+  <circle cx="320" cy="280" r="128" fill="#d9dee7"/>
+  <path d="M112 720c18-170 98-255 208-255s190 85 208 255" fill="#d9dee7"/>
+  <text
+    x="320"
+    y="760"
+    fill="#52606d"
+    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="48"
+    font-weight="600"
+    letter-spacing="8"
+    text-anchor="middle"
+  >SBY</text>
+</svg>
