@@ -11,7 +11,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
       id: 'base', title: '基础信息', en: 'BASELINE',
       questions: [
         {
-          id: 'age', short: '年龄', title: '你的年龄', hint: '不同年龄段的推荐量和缺乏风险不同。',
+          id: 'age', short: '年龄', title: '你的年龄',
           type: 'radio', options: [
             { label: '18–29 岁', w: { iron: 1, b9: 1 } },
             { label: '30–49 岁', w: { iron: 1, calcium: 1 } },
@@ -20,7 +20,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'sex', short: '性别', title: '生理性别与阶段', hint: '月经、绝经和妊娠会改变铁、钙、叶酸与碘的需求。',
+          id: 'sex', short: '性别', title: '生理性别与阶段',
           type: 'radio', options: [
             { label: '男性', w: {} },
             { label: '女性，未绝经', w: { iron: 2 } },
@@ -61,7 +61,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
       id: 'diet', title: '饮食习惯', en: 'DIET',
       questions: [
         {
-          id: 'dietPattern', short: '饮食模式', title: '你平时的饮食模式', hint: '整体饮食结构决定了几类营养素的基础风险。',
+          id: 'dietPattern', short: '饮食模式', title: '你平时的饮食模式',
           type: 'radio', options: [
             { label: '杂食，肉蛋奶都吃', w: {} },
             { label: '蛋奶素', w: { b12: 3, iron: 2, zinc: 2, dha: 2, calcium: 1 } },
@@ -119,7 +119,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'seaweed', short: '海藻', title: '海带、紫菜等海藻的摄入频率', hint: '按每次 5–10 g 干重估算。海藻的碘含量极高，可能不足，也可能过量。',
+          id: 'seaweed', short: '海藻', title: '海带、紫菜等海藻的摄入频率', hint: '按每次 5–10 g 干重估算。',
           type: 'radio', options: [
             { label: '经常（每周 ≥2 次）', w: {}, flag: 'iodine-excess' },
             { label: '偶尔（每周 1 次左右）', w: {} },
@@ -179,7 +179,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'foodSecurity', short: '食物保障', title: '过去 12 个月是否因为经济原因吃不饱或减少进食？', hint: '食物不安全会同时拉低多种营养素摄入；这是整体饮食问题，不是单项缺什么。',
+          id: 'foodSecurity', short: '食物保障', title: '过去 12 个月是否因为经济原因吃不饱或减少进食？',
           type: 'radio', options: [
             { label: '没有', w: {} },
             { label: '偶尔', w: { iron: 1, b12: 1, zinc: 1, calcium: 1, 'vitamin-c': 1, b9: 1, magnesium: 1 } },
@@ -221,7 +221,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'conditions', short: '慢性病', title: '是否有以下慢性病（可多选）', hint: '肾病、甲状腺疾病会改变矿物质与碘的处理方式，剂量需要医生评估。',
+          id: 'conditions', short: '慢性病', title: '是否有以下慢性病（可多选）', hint: '肾病、甲状腺疾病会改变矿物质与碘的处理方式。',
           type: 'checkbox', options: [
             { label: '无', w: {}, exclusive: true },
             { label: '慢性肾病', w: { iron: 1, 'vitamin-d': 1 }, flag: 'kidney' },
@@ -230,7 +230,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'supplements', short: '补充剂', title: '你正在服用哪些补充剂（可多选）', hint: '已补充会降低相应缺乏风险；但不同产品剂量差异大，请对照标签，避免重复叠加。',
+          id: 'supplements', short: '补充剂', title: '你正在服用哪些补充剂（可多选）',
           type: 'checkbox', options: [
             { label: '复合维生素 / 矿物质', w: { b1: -1, b2: -1, b3: -1, b5: -1, b6: -1, b7: -1, b9: -1, b12: -1, 'vitamin-c': -1, 'vitamin-e': -1, 'vitamin-a': -1, copper: -1, zinc: -1, selenium: -1, magnesium: -1 }, flag: 'multi' },
             { label: '维生素 D', w: { 'vitamin-d': -4 } },
@@ -242,7 +242,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'symptoms', short: '症状', title: '最近是否有以下表现（可多选）', hint: '症状不具特异性，只作为线索，不作为诊断依据。',
+          id: 'symptoms', short: '症状', title: '最近是否有以下表现（可多选）',
           type: 'checkbox', options: [
             { label: '疲劳、乏力', w: { iron: 2, b12: 2, 'vitamin-d': 1, magnesium: 1 } },
             { label: '口腔溃疡 / 舌炎', w: { b2: 2, b6: 1, b12: 1, b9: 1, iron: 1 } },
@@ -259,7 +259,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
           ]
         },
         {
-          id: 'labs', short: '化验', title: '已有化验结果（可多选）', hint: '有明确化验异常时，优先级会显著提高。',
+          id: 'labs', short: '化验', title: '已有化验结果（可多选）',
           type: 'checkbox', options: [
             { label: '贫血', w: { iron: 3, b12: 2, b9: 2, copper: 1 } },
             { label: '铁蛋白偏低', w: { iron: 4 } },
@@ -405,7 +405,7 @@ window.createSupplementQuiz = ({ byId, esc }) => {
 
         return '<div class="q" id="q-' + q.id + '">' +
           '<div class="q-title" id="qlabel-' + q.id + '"><span class="q-num">' + num + '</span><span>' + esc(q.title) + '</span></div>' +
-          '<p class="q-hint">' + esc(q.hint) + '</p>' +
+          (q.hint ? '<p class="q-hint">' + esc(q.hint) + '</p>' : '') +
           '<div class="options' + (q.type === 'radio' && q.options.length <= 2 ? ' one-col' : '') + '" role="group" aria-labelledby="qlabel-' + q.id + '">' + opts + '</div>' +
           (q.id === 'bmi' ? bmiCalcHtml() : '') +
         '</div>';
