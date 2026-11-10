@@ -1,0 +1,48 @@
+/* 资料来源链接。 */
+window.NutritionEvidence = {
+  refs: {
+    dga2030: ["USDA / HHS · 2025–2030 美国膳食指南","https://cdn.realfood.gov/DGA.pdf"],
+    dgaFoundation: ["USDA / HHS · 2025–2030 指南科学依据","https://cdn.realfood.gov/Scientific%20Report.pdf"],
+    dgac2025: ["DGAC · 2025 科学报告","https://www.dietaryguidelines.gov/2025-advisory-committee-report"],
+    uncompromised: ["CSPI / 生物多样性中心 · Uncompromised DGA","https://www.cspi.org/sites/default/files/2026-01/20260107_CSPI_uncompromisedDGA_report_4_FINAL.pdf"],
+    accNutrition: ["ACC · 心血管疾病预防与膳食（2026）","https://pubmed.ncbi.nlm.nih.gov/42814074/"],
+    fatCochrane: ["Cochrane · 饱和脂肪与心血管事件","https://pubmed.ncbi.nlm.nih.gov/32428300/"],
+    upfDicken: ["Dicken 等 · 加工程度与体重交叉试验（2025）","https://pubmed.ncbi.nlm.nih.gov/40760353/"],
+    dsq: ["美国 NCI · 膳食筛查问卷（DSQ）原表","https://epi.grants.cancer.gov/diet/shortreg/instruments/dsq-in-nhanes-09-10-self-administered-english-version.pdf"],
+    dqq: ["Global Diet Quality Project · 中国版 DQQ","https://www.dietquality.org/countries/chn"],
+    asa24Method: ["美国 NCI · ASA24 的多轮回顾方法","https://epi.grants.cancer.gov/asa24/respondent/methodology.html"],
+    foodSecurity: ["美国 USDA ERS · 家庭食物获取调查原表","https://www.ers.usda.gov/media/6422/us-household-food-security-survey-module.pdf"],
+    label: ["NIH ODS · 如何读补剂标签","https://ods.od.nih.gov/factsheets/WYNTK-Consumer/"],
+    usada: ["USADA · 补剂第三方检测与批号核查","https://www.usada.org/substances/supplement-connect/"],
+    potassium: ["NIH ODS · 钾","https://ods.od.nih.gov/factsheets/Potassium-HealthProfessional/"],
+    odsVitaminK: ["NIH ODS · 维生素 K 与用药","https://ods.od.nih.gov/factsheets/VitaminK-HealthProfessional/"],
+    odsVitaminA: ["NIH ODS · 维生素 A 与 β-胡萝卜素","https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/"]
+  },
+  factNames: {
+    "vitamin-a": "VitaminA-HealthProfessional",
+    "vitamin-c": "VitaminC-HealthProfessional",
+    "vitamin-d": "VitaminD-HealthProfessional",
+    "vitamin-e": "VitaminE-HealthProfessional",
+    "vitamin-k": "VitaminK-HealthProfessional",
+    "b1": "Thiamin-HealthProfessional",
+    "b2": "Riboflavin-HealthProfessional",
+    "b3": "Niacin-HealthProfessional",
+    "b5": "PantothenicAcid-HealthProfessional",
+    "b6": "VitaminB6-HealthProfessional",
+    "b7": "Biotin-HealthProfessional",
+    "b9": "Folate-HealthProfessional",
+    "b12": "VitaminB12-HealthProfessional",
+    "calcium": "Calcium-HealthProfessional",
+    "magnesium": "Magnesium-HealthProfessional",
+    "iron": "Iron-HealthProfessional",
+    "zinc": "Zinc-HealthProfessional",
+    "selenium": "Selenium-HealthProfessional",
+    "iodine": "Iodine-HealthProfessional",
+    "copper": "Copper-HealthProfessional",
+    "chromium": "Chromium-HealthProfessional",
+    "choline": "Choline-HealthProfessional",
+    "manganese": "Manganese-HealthProfessional",
+    "boron": "Boron-HealthProfessional",
+    "probiotics": "Probiotics-HealthProfessional"
+  }
+};
