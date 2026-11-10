@@ -302,31 +302,33 @@ window.createSupplementQuiz = ({ byId, esc }) => {
   var KIND_LABEL = { lab: '化验', symptom: '症状', medical: '病史', state: '状态', diet: '饮食', supp: '补充', other: '其他' };
   var KIND_ORDER = { lab: 0, symptom: 1, medical: 2, state: 3, diet: 4, supp: 5, other: 6 };
 
+  var IRON_CAUTION = '核对各产品标签上的元素铁，合计每日剂量。遗传性血色病患者应避免额外补铁。';
+
   var FLAGS = {
-    pregnancy: { title: '孕期 / 哺乳期', text: '叶酸、铁、碘、DHA 需求上升。优先食物与医生确认的补充方案，避免自行叠加高剂量维生素 A。' },
-    vegan: { title: '严格素食', text: '维生素 B12 必须补充；铁、锌、钙、DHA、碘需要主动规划，并定期检测。' },
-    'iodine-excess': { title: '碘摄入可能偏高', text: '海带、紫菜含碘量极高。频繁食用时不要再补碘，甲状腺疾病患者需咨询医生。' },
-    alcohol: { title: '长期饮酒', text: 'B1、叶酸、镁、锌消耗增加；B 族形式需按具体成分判断，不能一概换成活性形式。' },
-    ppi: { title: '长期使用 PPI', text: '胃酸减少会降低 B12、镁、钙、铁的吸收，建议定期复查。' },
-    liver: { title: '慢性肝病', text: 'B 族需求可能上升，但形式选择要看具体成分；避免大剂量维生素 A；镁、锌、维生素 D 需监测。' },
-    underweight: { title: '体重偏低', text: '整体能量与蛋白质不足时，多种微量营养素都可能不够。先评估总摄入，不要只补单项。' },
-    'food-insecure': { title: '食物不安全', text: '这不是“缺哪一种”的问题，而是整体饮食不足。优先保证能量、蛋白质和基本食物多样性，必要时寻求营养援助。' },
-    diuretic: { title: '长期使用利尿剂', text: '可能增加钾、镁流失。补钾必须由医生评估，肾功能不全者尤其危险。' },
-    anticoag: { title: '长期使用抗凝药', text: '维生素 K 摄入应保持稳定，不要自行大剂量补 K；开始或停用前咨询医生。' },
-    kidney: { title: '慢性肾病', text: '钾、镁、磷的补充必须由医生评估；不要自行补钾或使用高剂量镁。' },
-    thyroid: { title: '甲状腺疾病', text: '不要自行补碘；硒和碘的剂量需结合甲功与医生意见。' },
-    multi: { title: '已服复合维生素', text: '复合配方通常含维生素 A、铁、锌、硒。不要再叠加单方高剂量，先看标签上的元素量与 UL。' },
-    'supp-iron': { title: '正在补铁', text: '未确诊缺铁不要长期补。成年男性与绝经后女性每日超过 42 mg 需医生评估，血色病携带者尤其要避免。' }
+    pregnancy: { title: '备孕、孕期与哺乳期', text: '备孕时优先核对叶酸补充。孕期核对含视黄醇的补剂，避免叠加高剂量。' },
+    vegan: { title: '严格素食', text: '从维生素 B12 强化食品或补剂获得足够的 B12。' },
+    'iodine-excess': { title: '经常食用海藻', text: '核对复合维生素和海藻补剂中的碘，避免叠加。' },
+    alcohol: { title: '长期饮酒', text: '核对饮食中的维生素 B1、叶酸、镁和锌。' },
+    ppi: { title: '长期服用抑酸药（PPI）', text: '可能影响维生素 B12 和铁的吸收，也可能降低血镁。' },
+    liver: { title: '慢性肝病', text: '核对补剂标签上的维生素 A，避免叠加高剂量。' },
+    underweight: { title: '体重偏低', text: '记下近期体重变化和几天的实际食量。' },
+    'food-insecure': { title: '食物预算不足', text: '优先吃够能量和蛋白质，尽量搭配不同食物。需要时联系当地的食物援助服务。' },
+    diuretic: { title: '长期使用利尿剂', text: '袢利尿剂和噻嗪类可能降低血钾与血镁，保钾利尿剂可能升高血钾。补钾前核对药名和近期血钾。' },
+    anticoag: { title: '长期使用抗凝药', text: '服用华法林时，保持食物和补剂中的维生素 K 摄入稳定。' },
+    kidney: { title: '慢性肾病', text: '含钾补剂和代盐可能升高血钾。核对补剂中的钾、镁和磷。' },
+    thyroid: { title: '甲状腺疾病', text: '碘过量可能加重部分甲状腺疾病。核对海藻补剂和复合维生素中的碘。' },
+    multi: { title: '已服复合维生素', text: '对照标签，合计各产品中的维生素 A、铁、锌和硒。' },
+    'supp-iron': { title: '正在补铁', text: IRON_CAUTION }
   };
 
   var CONDITIONAL = {
-    iron: '铁：未确诊缺铁不要长期补。成年男性与绝经后女性每日超过 42 mg 需医生评估，血色病携带者尤其要避免。',
-    'vitamin-a': '维生素 A：孕期高剂量视黄醇有致畸风险，优先 β-胡萝卜素或遵医嘱；肝病患者也需要控制剂量。',
-    selenium: '硒：安全窗口窄。巴西坚果 1–2 颗就可能接近每日需要量，长期超过 400 µg 有脱发、指甲变形风险。',
-    iodine: '碘：海带、紫菜一次就可能超过每日需要量。甲状腺疾病患者不要自行补碘。',
-    potassium: '钾：肾功能不全、服用 ACEI/ARB 或螺内酯者，补钾可能致命，必须由医生评估。',
-    b6: '维生素 B6：长期每天超过 100 mg 可致周围神经病变，表现为手脚麻木。',
-    b7: '生物素：高剂量会干扰甲状腺功能和肌钙蛋白化验，抽血前 2–3 天应停用。'
+    iron: IRON_CAUTION,
+    'vitamin-a': '孕期摄入过量预成型维生素 A 会增加胎儿畸形风险。长期高剂量也可能损伤肝脏。',
+    selenium: '巴西坚果含硒较多。长期摄入过量可出现脱发和指甲变脆。',
+    iodine: '海带、紫菜一次就可能超过每日碘需要量。核对补剂中的碘。',
+    potassium: '肾功能下降或服用普利类、沙坦类或螺内酯时，补钾可能使血钾过高。',
+    b6: '长期摄入过量维生素 B6 可引起周围神经病变，例如手脚麻木。',
+    b7: '高剂量生物素会干扰部分甲状腺和肌钙蛋白化验。抽血前告知检验人员服用剂量和时间。'
   };
 
   /* ---------------- quiz engine ---------------- */
@@ -806,15 +808,14 @@ window.createSupplementQuiz = ({ byId, esc }) => {
       var tests = pickTests(r);
       if (tests.length) {
         next = '<b>检测项目</b>' + esc(tests[0].name) +
-          (tests[0].sample ? '（' + esc(tests[0].sample) + '）' : '') + '。';
-        if (tests.length > 1) next += '其他项目包括' + esc(tests[1].name) + '。';
+          (tests[0].sample ? '（' + esc(tests[0].sample) + '）' : '') +
+          (tests.length > 1 ? '、' + esc(tests[1].name) : '');
       }
     }
 
     var caution = '';
     if (CONDITIONAL[r.n.id]) {
-      caution = '<div class="result-caution"><span>剂量提醒</span>' +
-        esc(CONDITIONAL[r.n.id].replace(/^[^：]+：/, '')) + '</div>';
+      caution = '<div class="result-caution">' + esc(CONDITIONAL[r.n.id]) + '</div>';
     }
 
     return '<div class="result-row result-tone-' + v.tone + '">' +
@@ -827,14 +828,10 @@ window.createSupplementQuiz = ({ byId, esc }) => {
     '</div>';
   }
 
-  function resultGroupHtml(level, title, desc, items) {
+  function resultGroupHtml(level, title, items) {
     if (!items.length) return '';
     return '<section class="result-group level-' + level + '">' +
-      '<div class="result-group-head">' +
-        '<h3>' + title + '</h3>' +
-        '<span class="rg-count">' + items.length + ' 项</span>' +
-        (desc ? '<p>' + desc + '</p>' : '') +
-      '</div>' +
+      '<div class="result-group-head"><h3>' + title + '</h3></div>' +
       '<div class="result-list">' + items.map(resultRowHtml).join('') + '</div>' +
     '</section>';
   }
@@ -887,27 +884,20 @@ window.createSupplementQuiz = ({ byId, esc }) => {
     var dq = dietQuality(lastAnswers);
     var dqHtml = '';
     if (dq.max >= 3) {
-      var dqLabel = dq.score >= dq.max - 1 ? '较好' : dq.score >= Math.ceil(dq.max / 2) ? '一般' : '偏低';
       var dqDetail = [];
       if (dq.hits.length) dqDetail.push('达标：' + dq.hits.map(function (x) { return x.label; }).join('、'));
       if (dq.misses.length) dqDetail.push('未达标：' + dq.misses.map(function (x) { return x.label; }).join('、'));
-      dqHtml = '<div class="diet-quality"><b>饮食质量 ' + dq.score + '/' + dq.max + '</b><span>' + dqLabel + '</span>' +
-        '<p>' + dqDetail.join('；') + '。</p></div>';
-    }
-    var suppIdx = lastAnswers.supplements || [];
-    var hasSupp = suppIdx.some(function (i) { return i !== 6; });
-    if (hasSupp) {
-      dqHtml += '<p class="supp-note">评分已计入你填写的补剂。</p>';
+      dqHtml = '<div class="diet-quality"><b>饮食习惯 ' + dq.score + '/' + dq.max + ' 项达标</b>' +
+        '<p>' + dqDetail.join('。') + '。</p></div>';
     }
 
-    var clinicalHtml = resultGroupHtml('clinical', '缺乏可能性较高', '', clinical);
-    var riskHtml = resultGroupHtml('risk', '缺乏可能性中等', '先调整饮食，3 个月后复评。', risk);
+    var clinicalHtml = resultGroupHtml('clinical', '缺乏可能性较高', clinical);
+    var riskHtml = resultGroupHtml('risk', '缺乏可能性中等', risk);
 
     var faintHtml = '';
     if (lowRisk.length) {
       faintHtml = '<section class="result-group level-low">' +
-        '<div class="result-group-head"><h3>缺乏可能性较低</h3><span class="rg-count">' + lowRisk.length + ' 项</span>' +
-        '</div>' +
+        '<div class="result-group-head"><h3>缺乏可能性较低</h3></div>' +
         '<p class="faint-list">' + lowRisk.map(function (r) {
           return '<a href="#/nutrient/' + r.n.id + '">' + esc(r.n.name) + '</a>';
         }).join('<span class="faint-sep">·</span>') + '</p>' +
@@ -916,10 +906,11 @@ window.createSupplementQuiz = ({ byId, esc }) => {
 
     var flagsHtml = '';
     if (lastFlags.length) {
+      var ironCautionShown = clinical.concat(risk).some(function (r) { return r.n.id === 'iron'; });
       flagsHtml = lastFlags.map(function (key) {
         var f = FLAGS[key];
-        if (!f) return '';
-        return '<div class="callout"><span class="callout-label">特别提示</span><strong>' + esc(f.title) + '</strong>　' + esc(f.text) + '</div>';
+        if (!f || (key === 'supp-iron' && ironCautionShown)) return '';
+        return '<div class="callout"><strong>' + esc(f.title) + '</strong>' + esc(f.text) + '</div>';
       }).join('');
     }
 
