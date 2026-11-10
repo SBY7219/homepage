@@ -441,7 +441,8 @@ p {
 
 .index-group-standalone,
 #research .index-group,
-#notes .index-group {
+#notes .index-group,
+#more .index-group {
   padding-left: 0;
 }
 
@@ -511,9 +512,8 @@ p {
   position: sticky;
   z-index: 40;
   top: 0;
-  background: rgba(255, 243, 241, 0.96);
+  background: var(--paper);
   border-bottom: 1px solid var(--rule);
-  backdrop-filter: blur(8px);
 }
 
 .top-nav {
