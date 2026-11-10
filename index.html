@@ -8,18 +8,22 @@
       content="SHI Bingyi, economics PhD student at The Chinese University of Hong Kong, Shenzhen. Research, writing, and study notes."
     />
     <title>施秉佚 SHI Bingyi</title>
-    <link href="styles.css" rel="stylesheet" />
+    <link href="styles.css?v=garamond" rel="stylesheet" />
   </head>
   <body class="home-page">
     <a class="skip-link" href="#research">Skip to research</a>
 
     <main class="horizontal-site">
-      <section class="home-panel" id="home" aria-labelledby="site-name">
-        <div class="panel-inner">
+      <div class="edge-spacer edge-spacer-start" aria-hidden="true"></div>
+
+      <section class="home-panel intro-panel" id="home" aria-labelledby="site-name">
+        <div class="panel-inner intro-copy">
           <header class="identity-header">
             <h1 id="site-name">
-              <span lang="zh-CN">施秉佚</span>
-              <span class="romanized-name">SHI Bingyi</span>
+              <a href="index.html">
+                <span class="chinese-name" lang="zh-CN">施秉佚</span>
+                <span>SHI Bingyi</span>
+              </a>
             </h1>
             <img
               src="img/profile_pic.png"
@@ -28,53 +32,80 @@
             />
           </header>
 
-          <p class="intro-lead">
-            I am a PhD student in economics at The Chinese University of Hong Kong, Shenzhen.
+          <p>
+            I am a <strong>PhD student in economics</strong> at The Chinese University
+            of Hong Kong, Shenzhen.
           </p>
-          <p class="intro-background">
+          <p>
             I study statistical inference and econometrics. I earned a BSc in statistics
             from Nankai University.
           </p>
+        </div>
 
+        <div class="intro-controls">
           <nav class="home-nav" aria-label="Main navigation">
             <a href="research.html">Research</a>
+            <a href="teaching.html">Teaching</a>
             <a href="notes.html">Notes</a>
             <a href="blog.html">Blog</a>
-            <a href="teaching.html">Teaching</a>
             <a href="cv.html">CV</a>
             <a href="contact.html">Contact</a>
           </nav>
+          <div class="contact-strip">
+            <a href="mailto:shibingyi@mail.nankai.edu.cn">Email</a>
+            <a href="https://github.com/SBY7219/">GitHub</a>
+            <a href="https://x.com/shibingyi1006">X</a>
+            <a href="rss.xml">RSS</a>
+          </div>
         </div>
       </section>
 
       <section class="home-panel" id="research" aria-labelledby="research-heading">
         <div class="panel-inner">
           <header class="panel-heading">
-            <h2 id="research-heading">Projects</h2>
+            <h2 id="research-heading">Projects:<br />statistics &amp; economics</h2>
+            <p>
+              Probability models and statistical methods for empirical economics.
+            </p>
           </header>
 
-          <ul class="major-projects">
+          <ol class="major-projects">
             <li class="project-card project-card-inference">
               <a href="research.html#inference">
                 <h3>Statistical inference</h3>
-                <p>Probability models and assumptions behind statistical procedures.</p>
+                <p>Probability models and assumptions behind statistical procedures</p>
               </a>
             </li>
             <li class="project-card project-card-econometrics">
               <a href="research.html#econometrics">
                 <h3>Econometrics</h3>
-                <p>Statistical methods for empirical economic questions.</p>
+                <p>Statistical methods for empirical economic questions</p>
               </a>
             </li>
-          </ul>
+          </ol>
 
           <section class="index-group" aria-labelledby="working-notes-heading">
             <h3 id="working-notes-heading">Working notes</h3>
-            <ul class="text-index">
-              <li><a href="probstat.html">Probability and statistics</a></li>
-              <li><a href="measure.html">Measure theory</a></li>
-              <li><a href="linear_algebra.html">Linear algebra</a></li>
-            </ul>
+            <ol class="text-index">
+              <li>
+                <a href="probstat.html">
+                  <h4>Probability and statistics</h4>
+                  <p>Distributions, estimation, and inference</p>
+                </a>
+              </li>
+              <li>
+                <a href="measure.html">
+                  <h4>Measure theory</h4>
+                  <p>Foundations of integration and probability</p>
+                </a>
+              </li>
+              <li>
+                <a href="linear_algebra.html">
+                  <h4>Linear algebra</h4>
+                  <p>Vector spaces, linear maps, and matrices</p>
+                </a>
+              </li>
+            </ol>
           </section>
         </div>
       </section>
@@ -82,30 +113,36 @@
       <section class="home-panel" id="writing" aria-labelledby="writing-heading">
         <div class="panel-inner">
           <header class="panel-heading">
-            <h2 id="writing-heading">Writing from the notebook</h2>
+            <h2 id="writing-heading">Writing from<br />the notebook</h2>
+            <p>
+              Reading guides in logic and programming, and plans for future essays.
+            </p>
           </header>
 
-          <ul class="text-index text-index-roomy">
-            <li>
-              <a href="blog/2026-02-notes-and-writing-plan.html">
-                <span class="entry-title">Notes and writing plan</span>
-                <p>Topic surveys, proof notes, and translation updates.</p>
-                <time datetime="2026-02-13">February 2026</time>
-              </a>
-            </li>
-            <li>
-              <a href="programming.html">
-                <span class="entry-title">Thoughts on programming</span>
-                <p>An introduction to programming and abstraction.</p>
-              </a>
-            </li>
-            <li>
-              <a href="logic.html">
-                <span class="entry-title">Logic study guide</span>
-                <p>A reading guide to proof, semantics, and formal reasoning.</p>
-              </a>
-            </li>
-          </ul>
+          <section class="index-group index-group-standalone" aria-labelledby="recent-heading">
+            <h3 id="recent-heading" class="visually-hidden">Recent writing</h3>
+            <ol class="text-index text-index-roomy">
+              <li>
+                <a href="blog/2026-02-notes-and-writing-plan.html">
+                  <h4>Notes and writing plan</h4>
+                  <p>Topic surveys, proof notes, and translation updates</p>
+                  <time datetime="2026-02-13">February 2026</time>
+                </a>
+              </li>
+              <li>
+                <a href="programming.html">
+                  <h4>Thoughts on programming</h4>
+                  <p>Notes on languages, abstraction, and computation</p>
+                </a>
+              </li>
+              <li>
+                <a href="logic.html">
+                  <h4>Logic study guide</h4>
+                  <p>A route through proof, semantics, and formal reasoning</p>
+                </a>
+              </li>
+            </ol>
+          </section>
 
           <p class="panel-action"><a href="blog.html">All writing</a></p>
         </div>
@@ -114,63 +151,104 @@
       <section class="home-panel" id="notes" aria-labelledby="notes-heading">
         <div class="panel-inner">
           <header class="panel-heading">
-            <h2 id="notes-heading">Notes</h2>
+            <h2 id="notes-heading">Notes:<br />a working library</h2>
+            <p>
+              Study notes, reading guides, and translations.
+            </p>
           </header>
 
-          <ul class="major-projects">
+          <ol class="major-projects compact-projects">
             <li class="project-card project-card-math">
               <a href="notes.html#mathematics">
                 <h3>Mathematics and statistics</h3>
-                <p>Analysis, probability, inference, and linear algebra.</p>
+                <p>Analysis, probability, inference, and linear algebra</p>
               </a>
             </li>
             <li class="project-card project-card-computation">
               <a href="notes.html#programming">
-                <h3>Programming languages</h3>
-                <p>Semantics, macros, types, and implementation.</p>
+                <h3>Programming languages and semantics</h3>
+                <p>Language design, macros, types, and implementation</p>
               </a>
             </li>
-          </ul>
+          </ol>
 
           <section class="index-group" aria-labelledby="logic-notes-heading">
             <h3 id="logic-notes-heading">Logic and foundations</h3>
-            <ul class="text-index">
-              <li><a href="proof_theory.html">Proof theory</a></li>
-              <li><a href="cat_awodey.html">Category theory</a></li>
-              <li><a href="hott.html">Homotopy type theory</a></li>
-            </ul>
+            <ol class="text-index">
+              <li>
+                <a href="proof_theory.html">
+                  <h4>Proof theory</h4>
+                  <p>Proofs, calculi, and logical complexity</p>
+                </a>
+              </li>
+              <li>
+                <a href="cat_awodey.html">
+                  <h4>Category theory</h4>
+                  <p>Categorical methods and structural mathematics</p>
+                </a>
+              </li>
+              <li>
+                <a href="hott.html">
+                  <h4>Homotopy type theory</h4>
+                  <p>Types, spaces, and constructive foundations</p>
+                </a>
+              </li>
+            </ol>
           </section>
 
-          <p class="panel-action"><a href="notes.html">Full notes index</a></p>
+          <p class="panel-action"><a href="notes.html">Browse the full notes index</a></p>
         </div>
       </section>
 
       <section class="home-panel" id="more" aria-labelledby="more-heading">
         <div class="panel-inner">
           <header class="panel-heading">
-            <h2 id="more-heading">More</h2>
+            <h2 id="more-heading">Teaching, links<br />&amp; contact</h2>
           </header>
 
-          <section class="index-group" aria-labelledby="academic-heading">
+          <section class="index-group index-group-standalone" aria-labelledby="academic-heading">
             <h3 id="academic-heading">Academic</h3>
-            <ul class="text-index">
-              <li><a href="teaching.html">Teaching</a></li>
-              <li><a href="cv.html">Curriculum vitae</a></li>
-              <li><a href="connections.html">Links and friends</a></li>
-            </ul>
+            <ol class="text-index text-index-roomy">
+              <li>
+                <a href="teaching.html">
+                  <h4>Teaching</h4>
+                  <p>Instructional approach</p>
+                </a>
+              </li>
+              <li>
+                <a href="cv.html">
+                  <h4>Curriculum vitae</h4>
+                </a>
+              </li>
+              <li>
+                <a href="connections.html">
+                  <h4>Links and friends</h4>
+                  <p>Academic blogs, personal sites, and tools</p>
+                </a>
+              </li>
+            </ol>
           </section>
 
           <section class="index-group" aria-labelledby="contact-heading">
             <h3 id="contact-heading">Contact</h3>
-            <ul class="text-index">
-              <li><a href="mailto:shibingyi@mail.nankai.edu.cn">Email</a></li>
-              <li><a href="https://github.com/SBY7219/">GitHub</a></li>
-              <li><a href="https://x.com/shibingyi1006">X</a></li>
-              <li><a href="rss.xml">RSS</a></li>
-            </ul>
+            <ol class="text-index">
+              <li>
+                <a href="mailto:shibingyi@mail.nankai.edu.cn">
+                  <h4>Email</h4>
+                  <p>shibingyi@mail.nankai.edu.cn</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/SBY7219/">
+                  <h4>GitHub</h4>
+                </a>
+              </li>
+            </ol>
           </section>
         </div>
       </section>
+
+      <div class="edge-spacer edge-spacer-end" aria-hidden="true"></div>
     </main>
   </body>
 </html>
