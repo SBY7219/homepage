@@ -9,9 +9,6 @@
    (H1 "施秉佚 " (A "RSS" #:attr* '((href "rss.xml"))) " "
        (A "网站介绍" #:attr* '((href "intro.html"))))
 
-    (H2 (A "个人简历" #:attr* '((href "notes/pl.pdf"))))
-    (H2 (A "论文和文章" #:attr* '((href "papers.html"))))
-    
 
     (H2 (A "编程语言" #:attr* '((href "notes/pl.pdf"))) ": "
         (A "代码集" #:attr* '((href "notes/pl.zip"))))

@@ -8,12 +8,6 @@
   (RC #:title "施秉佚"
       #:link "https://sby7219.github.io/sby.github.io/"
       #:description "施秉佚的主页, 关于统计, 概率, 计算."
-      (Item (Title "个人简历")
-            (Description "一份简要的CV.")
-            (Link "cv.pdf"))
-      (Item (Title "个人论文和文章")
-            (Description "本人的可以被定义为new/novel的论文和文章.")
-            (Link "papers.html"))
       (Item (Title "概率统计笔记")
             (Description "整理的一些中文网络中比较少见的概率统计方面笔记.")
             (Link "probstat.html"))
