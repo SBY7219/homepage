@@ -1,0 +1,31 @@
+{
+  "name": "shibingyi-homepage",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node web/scripts/build.mjs",
+    "dev": "node web/scripts/serve.mjs",
+    "preview": "node web/scripts/serve.mjs --no-watch",
+    "test": "node --test web/lib/article/*.test.mjs web/test/compiler.test.mjs",
+    "test:site": "node --test web/test/site.test.mjs"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "3.1.1",
+    "esbuild": "^0.25.0",
+    "github-slugger": "^2.0.0",
+    "katex": "^0.16.0",
+    "minisearch": "^7.2.0",
+    "parse5": "^8.0.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-mdx": "^3.1.1",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.0"
+  }
+}
