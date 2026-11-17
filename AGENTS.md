@@ -3,8 +3,8 @@
 ## Repository expectations
 
 - This repository hosts my personal academic homepage and a large collection of HTML notes.
-- The site is served as a static site via GitHub Pages with a custom domain on Cloudflare.
-- Keep everything as plain static HTML + CSS. Do not introduce Jekyll, Hugo, or any build system.
+- The live `www.sby.sh.cn` site is served by Cloudflare Pages from the repository root. GitHub hosts the source; GitHub Actions is not required for publishing.
+- Publish plain static HTML, CSS and browser scripts. MDX is compiled locally before committing; production does not run a build system.
 
 ## Goals for this project
 
@@ -25,3 +25,14 @@
 
 - Before deleting or moving any file (especially under `source/` and `notes/`), always propose a list of candidates and wait for my explicit confirmation.
 - Do not modify GitHub Pages or Cloudflare configuration files (such as CNAME) unless explicitly asked.
+
+## Static MDX writing and publishing
+
+- Preserve the existing five-column homepage, EB Garamond fonts, colors, navigation, article text and URLs unless the user asks to change them. The current design takes precedence over the older redesign goals above.
+- Write blog articles in `web/content/posts/<slug>.mdx`. Use the components and metadata documented in `web/README.md`. Keep article IDs, slugs and creation dates stable.
+- Existing mathematical notes retain their Racket/SMathML sources and HTML/MathML output. They are indexed by search without conversion to MDX.
+- Run `pnpm --dir web install --frozen-lockfile` to install the local compiler. Rust, API services, databases, comments, ratings and reader accounts are not part of this site.
+- Before committing, run `pnpm --dir web test`, `pnpm --dir web build`, `pnpm --dir web test:site` and `pnpm --dir web check:published`. Commit MDX source and its generated HTML, Markdown, search index and assets together.
+- `web/templates/blog.html` and `web/templates/rss.xml` contain existing static entries. Root `blog.html`, `rss.xml`, MDX article output, `search.html`, `assets/blog/` and `s/` are generated publishing files listed in `web/generated-files.json`.
+- Keep the compiler dependencies and lockfile inside `web/`. The root remains ready to publish without a cloud build. Do not add a GitHub Actions publishing workflow or require a payment method.
+- Work on a branch and publish through a pull request. Direct commits or pushes to `main` are prohibited. Commit author and committer must both be `shibingyi <m13818413106@163.com>`.

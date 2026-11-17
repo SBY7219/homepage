@@ -25,5 +25,8 @@
             <description>The Little Typer是一本关于依赖类型的书籍.</description>
             <link>little_typer.html</link>
         </item>
-    </channel>
+    <item><title>Notes and Writing Plan</title><link>https://www.sby.sh.cn/blog/2026-02-notes-and-writing-plan.html</link>
+      <guid isPermaLink="false">shibingyi-blog-N0TES</guid><description>Topic surveys, proof notes, and translation updates.</description>
+      <pubDate>Fri, 13 Feb 2026 00:00:00 GMT</pubDate></item>
+</channel>
 </rss>
