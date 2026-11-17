@@ -65,7 +65,7 @@ test("legacy prose is searchable in Chinese and English while navigation, code a
     <nav>Navigation-only token</nav><h1>线性代数</h1>
     <p>有限维向量空间与矩阵。Vector spaces and matrices.</p>
     <math><mi>UnsearchableFormula</mi></math><pre>UnsearchableCode</pre>
-    </body></html>`, "linear_algebra.html");
+    <h2>UnwrittenPlaceholder</h2></body></html>`, "linear_algebra.html");
   const index = MiniSearch.loadJSON(createSearchIndex([document]), searchIndexOptions);
   assert.equal(index.search("向量空间", searchQueryOptions)[0].url, "/linear_algebra.html");
   assert.equal(index.search("向量空间", searchQueryOptions)[0].title, "线性代数 第2章 向量空间");
@@ -73,4 +73,5 @@ test("legacy prose is searchable in Chinese and English while navigation, code a
   assert.equal(index.search("Navigation-only", searchQueryOptions).length, 0);
   assert.equal(index.search("UnsearchableFormula", searchQueryOptions).length, 0);
   assert.equal(index.search("UnsearchableCode", searchQueryOptions).length, 0);
+  assert.equal(index.search("UnwrittenPlaceholder", searchQueryOptions).length, 0);
 });

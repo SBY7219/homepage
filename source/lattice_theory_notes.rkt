@@ -8,6 +8,6 @@
    (H1 "格论笔记")
    (H2 (A "格与序导论" #:attr* '((href "order.html"))))
    (H2 (A "格论 (Birkhoff)" #:attr* '((href "lattices.html"))))
-   (H2 (A "瞎写的格论笔记" #:attr* '((href "lattice_notes.html"))))
+   (H2 (A "偏序与格：定义笔记" #:attr* '((href "lattice_notes.html"))))
    
    ))

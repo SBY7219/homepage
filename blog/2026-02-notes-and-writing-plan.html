@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Notes and Writing Plan | Blog</title>
-    <meta name="description" content="Topic surveys, proof notes, and translation updates." />
+    <title>Reading routes | Blog</title>
+    <meta name="description" content="Three routes through the notes: statistical inference, types and proofs, and language implementation." />
     <link href="/styles.css?v=garamond-nav" rel="stylesheet" />
     <link rel="canonical" href="https://www.sby.sh.cn/blog/2026-02-notes-and-writing-plan.html" />
       <link rel="alternate" type="text/markdown" href="/blog/2026-02-notes-and-writing-plan.md" />
@@ -20,9 +20,39 @@
 <a href="/cv.html">CV</a>
 <a href="/contact.html">Contact</a>
   </nav></div></header><main class="site-shell"><article class="page-section mdx-article">
-      <h1>Notes and Writing Plan</h1>
-      <p class="post-date"><time datetime="2026-02-13">February 13, 2026</time></p>
-      <p>I plan to write topic surveys, proof notes, and updates on translation projects.</p>
+      <h1>Reading routes</h1>
+      <p class="post-date"><time datetime="2026-02-13">February 13, 2026</time> · Updated November 17, 2026</p>
+      <nav class="article-toc" aria-label="Table of contents"><p><strong>Contents</strong></p><ul>
+<li><a href="#statistical-inference">Statistical inference</a></li>
+<li><a href="#types-and-proofs">Types and proofs</a></li>
+<li><a href="#language-implementation">Language implementation</a></li>
+</ul></nav>
+<h2 id="statistical-inference"><a href="#statistical-inference" class="article-heading-link">Statistical inference</a></h2>
+<p>Work from model assumptions to estimates and tests.</p>
+<ol>
+<li>Define the model and sample: <a href="/notes/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B.pdf">统计模型 (PDF)</a> and <a href="/notes/%E6%80%BB%E4%BD%93%E5%92%8C%E6%A0%B7%E6%9C%AC.pdf">总体和样本 (PDF)</a>.</li>
+<li>Study sampling distributions: <a href="/notes/%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83.pdf">抽样分布 (PDF)</a> and <a href="/notes/%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E4%B8%8B%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E5%92%8C%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E7%9A%84%E5%88%86%E5%B8%83.pdf">正态总体下样本均值和样本方差的分布 (PDF)</a>.</li>
+<li>Compare estimation methods: <a href="/notes/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1.pdf">极大似然估计 (PDF)</a>, <a href="/notes/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1.pdf">贝叶斯估计 (PDF)</a>, and <a href="/notes/%E5%B9%BF%E4%B9%89%E7%9F%A9%E4%BC%B0%E8%AE%A1.pdf">广义矩估计 (PDF)</a>.</li>
+<li>Study a test problem: <a href="/notes/%E5%8F%8C%E6%A0%B7%E6%9C%AC%E4%B8%8D%E5%90%8C%E5%9D%87%E5%80%BC%E4%B8%8D%E5%90%8C%E6%96%B9%E5%B7%AE%E6%A3%80%E9%AA%8C.pdf">双样本不同均值不同方差检验 (PDF)</a>.</li>
+</ol>
+<p>The <a href="/probstat.html">probability and statistics index</a> lists all PDF notes by topic.</p>
+<h2 id="types-and-proofs"><a href="#types-and-proofs" class="article-heading-link">Types and proofs</a></h2>
+<p>Start with proofs and typed programs. Then study dependent types.</p>
+<ol>
+<li><a href="/curry-howard.html">Curry–Howard 同构讲义</a>: propositions, proofs, and typed terms.</li>
+<li><a href="/prot.html">证明与类型</a>: typed calculi and proof systems.</li>
+<li><a href="/little_typer.html">The Little Typer</a>: dependent types through code and dialogue.</li>
+<li><a href="/hott.html">同伦类型论</a>: identity types and their mathematical interpretation.</li>
+</ol>
+<h2 id="language-implementation"><a href="#language-implementation" class="article-heading-link">Language implementation</a></h2>
+<p>Follow a language from syntax and expansion to evaluation and compilation.</p>
+<ol>
+<li><a href="/programming.html">关于程序设计的思考</a>: abstraction and composition.</li>
+<li><a href="/macro_dsl.html">从宏到 DSL：Racket 的演化</a>: syntax, macros, and language construction.</li>
+<li><a href="/timp.html">Scheme 的三种实现模型</a>: evaluation and implementation models.</li>
+<li><a href="/p423.html">P423：编译器构造</a>: passes and representations in a compiler.</li>
+</ol>
+<p>For mathematical models of program behavior, read the <a href="/denotational_semantics_notes.html">指称语义学讲义</a>.</p>
       <p class="article-tools"><a href="/blog/2026-02-notes-and-writing-plan.md">Markdown</a> · <a href="/s/N0TES/">Short link</a></p>
     </article></main><script type="module" src="/assets/blog/article.js"></script></body>
 </html>

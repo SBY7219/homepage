@@ -81,13 +81,18 @@ readable. Password-protected sources are rejected by the static builder.
 
 Existing HTML/MathML notes, Racket sources, fonts, PDFs, the homepage and the
 supplement reference keep their source files, addresses and layouts. Their
-bytes are checked by the regression suite. The writing index and RSS templates
-live in `web/templates/`; their existing entries are retained alongside MDX
-articles. Edit the MDX source for a migrated article, rather than its generated
+bytes are checked by the regression suite. `web/content/catalog.mjs` defines the
+five Notes subjects, Writing sections and search exclusions. The page templates
+and RSS template live in `web/templates/`. `web/content/statistics.json` groups
+the existing 40 PDF links. Edit the MDX source for a migrated article, rather than its generated
 HTML. The original Writing Plan is retained in `web/templates/` for regression
 checks.
 
-The search index covers public HTML notes and MDX prose. It is loaded only on
+The search index covers selected HTML notes, MDX prose and the titles of the
+existing statistics PDFs; it does not extract or claim to search PDF bodies.
+Outline-only pages, navigation pages, aliases and the duplicate full linear
+algebra volume are excluded while their original URLs remain published.
+Empty section headings are omitted from search. The index is loaded only on
 the search page, and Chinese and English queries use the same tokenizer. Existing
 mathematical notes continue to use their original MathML; new MDX articles use
 build-time KaTeX. Comments, ratings, reader tracking and accounts are omitted.
@@ -102,7 +107,7 @@ pnpm --dir web check:published
 ```
 
 `build` creates the complete preview in `_site/`, then updates generated files
-in the repository root: the writing index, RSS, MDX article HTML and Markdown,
+in the repository root: Notes, the statistics directory, Writing, RSS, MDX article HTML and Markdown,
 short links, search page and index, and article assets. `web/generated-files.json`
 records the generated paths. Files outside that list are not overwritten by
 the publishing step. If removing an article would leave stale public files,

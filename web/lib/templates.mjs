@@ -1,3 +1,5 @@
+import { noteSections, writingSections, notesIntroduction, writingIntroduction } from "../content/catalog.mjs";
+
 export function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -53,17 +55,44 @@ export function articlePage(post, origin) {
 }
 
 export function blogPage(source, posts) {
-  const list = source.match(/<ul class="post-list">([\s\S]*?)<\/ul>/);
-  if (!list) throw new Error("The existing blog index is missing its post list");
-  const replaced = new Set(posts.map(post => `blog/${post.slug}.html`));
-  const existing = [...list[1].matchAll(/<li\b[\s\S]*?<\/li>/g)]
-    .map(match => match[0]).filter(item => ![...replaced].some(path => item.includes(`href="${path}"`)));
-  const entries = [...posts].sort((a, b) => b.created.localeCompare(a.created) || a.slug.localeCompare(b.slug))
-    .map(post => `<li><h2><a href="blog/${post.slug}.html">${escapeHtml(post.title)}</a></h2>
-      <p class="post-date">${escapeHtml(displayDate(post.created))}</p>
-      <p>${escapeHtml(post.description)}</p></li>`);
-  const html = source.replace(list[0], `<ul class="post-list">${[...existing, ...entries].join("\n")}</ul>`);
-  return html.replace('</h1>\n      </header>', '</h1>\n        <p><a href="search.html">Search</a></p>\n      </header>');
+  const sections = writingSections.map(section => {
+    const selected = posts.filter(post => {
+      const group = writingSections.find(item => post.categories.includes(item.id))?.id ?? "essays";
+      return group === section.id;
+    }).sort((a, b) => b.modified.localeCompare(a.modified) || a.slug.localeCompare(b.slug));
+    const entries = [...selected.map(post => ({ url: `blog/${post.slug}.html`, title: post.title,
+      description: post.description, date: post.modified, updated: post.modified !== post.created })), ...section.entries];
+    if (!entries.length) return "";
+    return `<section class="page-section" id="${section.id}"><h2>${escapeHtml(section.title)}</h2>
+      <ul class="post-list catalog-list">${entries.map(item => `<li><h3><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></h3>
+        ${item.date ? `<p class="post-date">${item.updated ? "Updated " : ""}<time datetime="${item.date}">${escapeHtml(displayDate(item.date))}</time></p>` : ""}
+        <p>${escapeHtml(item.description)}</p></li>`).join("\n")}</ul></section>`;
+  }).join("\n");
+  return fillCatalog(source, "writing", `<header class="page-header"><h1>Writing</h1>
+    <p>${escapeHtml(writingIntroduction)}</p><p><a href="search.html">Search</a></p></header>\n${sections}`);
+}
+
+function fillCatalog(source, name, content) {
+  const marker = `<!--${name}-catalog-->`;
+  if (!source.includes(marker)) throw new Error(`The ${name} template is missing its catalog marker`);
+  return source.replace(marker, () => content.replace(/[ \t]+$/gm, ""));
+}
+
+const links = entries => `<ul>${entries.map(item => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.title)}</a></li>`).join("\n")}</ul>`;
+
+export function notesPage(source) {
+  const sections = noteSections.map(section => `<section class="page-section" id="${section.id}">
+    <h2>${escapeHtml(section.title)}</h2>${links(section.entries)}
+    ${(section.groups ?? []).map(group => `<div${group.id ? ` id="${group.id}"` : ""}><h3>${escapeHtml(group.title)}</h3>${links(group.entries)}</div>`).join("\n")}
+    </section>`).join("\n");
+  return fillCatalog(source, "notes", `<header class="page-header"><h1>Notes</h1>
+    <p>${escapeHtml(notesIntroduction)}</p><p><a href="search.html">Search</a></p></header>\n${sections}`);
+}
+
+export function statisticsPage(source, statistics) {
+  return fillCatalog(source, "statistics", `<h1>${escapeHtml(statistics.title)}</h1>
+    <p>${escapeHtml(statistics.description)}</p><p><a href="${escapeHtml(statistics.overview.url)}">${escapeHtml(statistics.overview.title)}</a></p>
+    ${statistics.groups.map(group => `<section id="${group.id}"><h2>${escapeHtml(group.title)}</h2>${links(group.entries)}</section>`).join("\n")}`);
 }
 
 export function searchPage() {

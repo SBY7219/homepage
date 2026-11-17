@@ -1,0 +1,293 @@
+{
+  "htmlPaths": [
+    "analysis_notes.html",
+    "archive/index.html",
+    "blind.html",
+    "blog.html",
+    "blog/2026-02-notes-and-writing-plan.html",
+    "books.html",
+    "bps.html",
+    "brzozowski.html",
+    "cad.html",
+    "calculus.html",
+    "calculus_dieudonne.html",
+    "cat_awodey.html",
+    "classical_ai.html",
+    "classical_complex_analysis.html",
+    "clos.html",
+    "cltt.html",
+    "cmu15122.html",
+    "cmu15210.html",
+    "combinatorics_notes.html",
+    "computation_structures.html",
+    "connections.html",
+    "contact.html",
+    "corewar.html",
+    "curry-howard.html",
+    "cv.html",
+    "denotational_semantics_notes.html",
+    "ds.html",
+    "hocl.html",
+    "hoffman.html",
+    "hoffman_appendix.html",
+    "hoffman_ch1.html",
+    "hoffman_ch10.html",
+    "hoffman_ch2.html",
+    "hoffman_ch3.html",
+    "hoffman_ch4.html",
+    "hoffman_ch5.html",
+    "hoffman_ch6.html",
+    "hoffman_ch7.html",
+    "hoffman_ch8.html",
+    "hoffman_ch9.html",
+    "hoffman_preface.html",
+    "hott.html",
+    "huyan.html",
+    "ilinks.html",
+    "illustrations.html",
+    "index.html",
+    "induc.html",
+    "intro.html",
+    "jones.html",
+    "kerodon.html",
+    "lambda.html",
+    "lapb.html",
+    "lattice_notes.html",
+    "lattice_theory_notes.html",
+    "lattices.html",
+    "lem_editor.html",
+    "linear_algebra.html",
+    "linear_algebra_contents.html",
+    "linear_algebra_exercises.html",
+    "linear_algebra_notes.html",
+    "links.html",
+    "little_typer.html",
+    "logic.html",
+    "macro.html",
+    "macro_dsl.html",
+    "macro_notes.html",
+    "maxima.html",
+    "measure.html",
+    "metaocaml.html",
+    "misc.html",
+    "monad.html",
+    "mop.html",
+    "notes.html",
+    "nutrition/index.html",
+    "nutrition_by_sby.html",
+    "oplss.html",
+    "order.html",
+    "p423.html",
+    "pe_jones.html",
+    "pointless.html",
+    "polynomial_computation.html",
+    "probstat.html",
+    "programming.html",
+    "proof_theory.html",
+    "prot.html",
+    "refal.html",
+    "research.html",
+    "s/N0TES/index.html",
+    "scheme_cg.html",
+    "sdf.html",
+    "search.html",
+    "series.html",
+    "sewpr.html",
+    "shufengaodai.html",
+    "sicm.html",
+    "smathml.html",
+    "smathml_comments.html",
+    "smathml_everything.html",
+    "smathml_ref.html",
+    "sml-history.html",
+    "some_programs.html",
+    "sos.html",
+    "spt.html",
+    "stone.html",
+    "synclo.html",
+    "synsem.html",
+    "teaching.html",
+    "tg.html",
+    "timp.html",
+    "topos.html",
+    "useless.html",
+    "zil.html",
+    "zork.html"
+  ],
+  "pdfs": [
+    {
+      "url": "notes/mathstat2020-ZH.pdf",
+      "sha256": "7b9a5722d6d6a4510be3d5b5f82fe9c2dcfde180cb5f8efc0e8a7ad10b77f355"
+    },
+    {
+      "url": "notes/%E7%BB%9F%E8%AE%A1%E7%AE%80%E8%BF%B0.pdf",
+      "sha256": "5f657cfb9a8ea371649616e6d004a05586e98cae0424e2b053d0dddd673417ce"
+    },
+    {
+      "url": "notes/%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B.pdf",
+      "sha256": "02bcb826376420000f1f50e8db7c5c24cfadb4b63656caafeaaffe9e6c3cf32c"
+    },
+    {
+      "url": "notes/%E6%80%BB%E4%BD%93%E5%92%8C%E6%A0%B7%E6%9C%AC.pdf",
+      "sha256": "1fbb52a94440f5f70265fd2f5f976cf3425b69e10598f5aa7fd25d50aee94d0d"
+    },
+    {
+      "url": "notes/%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1.pdf",
+      "sha256": "e0340fb5a006bfca1a0b6c0d3fa3646fbf1c887399b60f9678f1e73d864595ac"
+    },
+    {
+      "url": "notes/%E7%BB%9F%E8%AE%A1%E9%87%8F.pdf",
+      "sha256": "15970d5b53ecf972a270984193913d28820db27363d7d3f6164667f56229b11b"
+    },
+    {
+      "url": "notes/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD.pdf",
+      "sha256": "904f1345204958ee13d5e73cd66539e976a86137c2941b14c236e3172d97221d"
+    },
+    {
+      "url": "notes/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83.pdf",
+      "sha256": "cda0de690e4c20652ef68fc02009ed6da6243eeb68c01ec232ad3a59d9a0eeb4"
+    },
+    {
+      "url": "notes/%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83.pdf",
+      "sha256": "67f92c4e62a29f283410e44912955d900db8c279956d98bd2f85b4aaef76d61b"
+    },
+    {
+      "url": "notes/%E6%8C%87%E6%95%B0%E6%97%8F.pdf",
+      "sha256": "ef38aaf6aaaf21f523e3095cf060ffec16722330f5946d7c621f60868872d727"
+    },
+    {
+      "url": "notes/%E4%BD%8D%E7%BD%AE-%E5%B0%BA%E5%BA%A6%E6%97%8F.pdf",
+      "sha256": "a717032e4ab50d81b0120598cd5c57a927dec435704803d0cdd1b5ac988f12be"
+    },
+    {
+      "url": "notes/%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83.pdf",
+      "sha256": "265abc2669f734d05f28930d6b4c8c8efc50a37397363ec3e85d442da2c6022a"
+    },
+    {
+      "url": "notes/%E5%88%86%E4%BD%8D%E6%95%B0%E5%87%BD%E6%95%B0.pdf",
+      "sha256": "2eb11bec0ea73d3ba212d3d0f4418545e70e75cb242e1765fc0fb585590c52c9"
+    },
+    {
+      "url": "notes/%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E4%B8%8B%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E5%92%8C%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E7%9A%84%E5%88%86%E5%B8%83.pdf",
+      "sha256": "a2b29f38339a88ee8c3bf574eec86d8d57c3c4405eba7f32e2930852fcaeb648"
+    },
+    {
+      "url": "notes/%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E6%9E%81%E9%99%90%E5%88%86%E5%B8%83.pdf",
+      "sha256": "72ee78b2bcbe41d733ede3330df9a334e72bd131eb2fb308937d17b0405ec5d7"
+    },
+    {
+      "url": "notes/%E6%95%A3%E7%82%B9%E5%9B%BE.pdf",
+      "sha256": "239c02c5a063075d6a0adb7f247e190726f3cf3c995a38e67338792fa018f7ff"
+    },
+    {
+      "url": "notes/%E7%9B%B4%E6%96%B9%E5%9B%BE.pdf",
+      "sha256": "aeef69502c27621d8e596e64cb47b8933d2cb614ec705bd0cae4134b4bd1b820"
+    },
+    {
+      "url": "notes/%E7%AE%B1%E7%BA%BF%E5%9B%BE.pdf",
+      "sha256": "a070f8d81aacc5ed3142ee3237f6f2d3767b8bb2404b8791ca6650a5c2cb0b02"
+    },
+    {
+      "url": "notes/Q-Q%E5%9B%BE.pdf",
+      "sha256": "4c803188fd914fce3195eb1c9b463b4984f4359e6e5eb076849743e1552c0f94"
+    },
+    {
+      "url": "notes/%E7%82%B9%E4%BC%B0%E8%AE%A1.pdf",
+      "sha256": "db4b2eaf7e3bc92f07ee206917946dc02d1429347169c80e7c8acffd7e3c772e"
+    },
+    {
+      "url": "notes/%E4%BC%B0%E8%AE%A1%E9%87%8F.pdf",
+      "sha256": "0a4b38f333ab52cd42920fe7cbb467b11d03c3aec3cef7f9606293f67e621e80"
+    },
+    {
+      "url": "notes/%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1.pdf",
+      "sha256": "4d603c7bdf9c27055cabd2f6d5b2b5e5e34abe217cd671876e04998e827e2f49"
+    },
+    {
+      "url": "notes/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1.pdf",
+      "sha256": "dbf9f9b3566ff381e375653befbb8db460ae6de2bb759a89baf823109592854b"
+    },
+    {
+      "url": "notes/%E7%9F%A9%E4%BC%B0%E8%AE%A1.pdf",
+      "sha256": "a2eb7adf1c99f1e15d94898f8c994b522f4f07578e1a7962accb0d6199351e31"
+    },
+    {
+      "url": "notes/%E5%B9%BF%E4%B9%89%E7%9F%A9%E4%BC%B0%E8%AE%A1.pdf",
+      "sha256": "b8cd7cb7a62e3dd95a9c92a6db7ffdfec865ada93bb6feb7a95928022d064436"
+    },
+    {
+      "url": "notes/%E4%BC%BC%E7%84%B6%E6%96%B9%E6%B3%95.pdf",
+      "sha256": "a937bbaa0961fc0795caca6e6a65c8bfbdd7643bc35eba2b3afdae122c37f424"
+    },
+    {
+      "url": "notes/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E9%87%8F.pdf",
+      "sha256": "33bc70f01d3126b493e0e8d60eb0f83ec2641bfed0297147faac8bc273b13a3f"
+    },
+    {
+      "url": "notes/%E6%AC%A1%E5%BA%8F%E7%BB%9F%E8%AE%A1%E9%87%8F.pdf",
+      "sha256": "4dd3c8eaa2de8c5039dc3d06ca89eafcb1f94d5d4a307018d4ed544e699e0585"
+    },
+    {
+      "url": "notes/%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE.pdf",
+      "sha256": "c811c3e77bbcd48c5cd043e19ea46312937764c18087ed8b7e17eaadb8d04f8f"
+    },
+    {
+      "url": "notes/%E4%B8%8D%E7%AD%89%E5%9D%87%E5%80%BC%E7%AD%89%E6%96%B9%E5%B7%AE%E7%9A%84%E6%A0%87%E5%87%86%E5%B7%AEUMVUE.pdf",
+      "sha256": "6ab88bc689f5edb09fbc1447f3ba43fa6299ca1019b17f9d8b406d4ba153a721"
+    },
+    {
+      "url": "notes/%E7%AD%89%E5%9D%87%E5%80%BC%E4%B8%8D%E7%AD%89%E6%96%B9%E5%B7%AE%E6%A0%B7%E6%9C%AC%E7%9A%84%E5%9D%87%E5%80%BCUMVUE.pdf",
+      "sha256": "80b2eec6ca97843f8659468b5dc5baf9adbd36ee8ee1d15db43e19bc062e4f1c"
+    },
+    {
+      "url": "notes/%E5%8D%95%E5%8F%98%E9%87%8F%E6%A0%B7%E6%9C%AC.pdf",
+      "sha256": "36948fae5cfa42848b57c01c1177fbad26c4d65ea9358c438fccae9d7e924510"
+    },
+    {
+      "url": "notes/%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%E6%83%85%E5%BD%A2.pdf",
+      "sha256": "110b19d6bdc3f76835efa26fc0107dd2b36e42c36ed02181d272324f99e3a64d"
+    },
+    {
+      "url": "notes/%E5%8F%8C%E6%A0%B7%E6%9C%AC%E4%B8%8D%E5%90%8C%E5%9D%87%E5%80%BC%E4%B8%8D%E5%90%8C%E6%96%B9%E5%B7%AE%E6%A3%80%E9%AA%8C.pdf",
+      "sha256": "3b45cf5bca374b30656d4bec582083e8113c9862d6e07f91f772a2c3a173d770"
+    },
+    {
+      "url": "notes/%E6%9C%AC%E7%A6%8F%E7%89%B9%E5%AE%9A%E5%BE%8B.pdf",
+      "sha256": "04e29fde2f343390bdec30122b7277db14253e6909581eb344d287e52fc9320b"
+    },
+    {
+      "url": "notes/%E7%9B%B8%E5%85%B3%E6%80%A7.pdf",
+      "sha256": "c1371156bb692a39b13d2a53d801d038de86cd06b50f5a17f599543cd1341f18"
+    },
+    {
+      "url": "notes/%E8%87%AA%E7%9B%B8%E5%85%B3%E6%80%A7.pdf",
+      "sha256": "45a042728a6ac1644013e1203be8fddd72e16ad9d594d28241cab837b42d547e"
+    },
+    {
+      "url": "notes/Cox%E5%9B%9E%E5%BD%92.pdf",
+      "sha256": "9d175f7d26d5453defca6baa548ebd6347b852db022443ed102683df820282c9"
+    },
+    {
+      "url": "notes/Fisher%E6%89%93%E5%88%86%E6%B3%95.pdf",
+      "sha256": "6ff1c2bb1b25314ce25e2787af13f3d5feb8d0b080aa3f806bef4c27c03e6fb3"
+    },
+    {
+      "url": "notes/EM%20%E7%AE%97%E6%B3%95.pdf",
+      "sha256": "cd96dd38f95c88a7ad75338f1183c37b204bc6bba760b637b538080d663dc9eb"
+    }
+  ],
+  "homeOutsideWriting": "e6a0401926bb50ef7cfac42a28b48b84f9ce9bf02ba2061094e98c8b272a8a3e",
+  "fontDeclarations": [
+    "--font-body: \"Segoe UI Variable Text\", Aptos, \"Segoe UI\", \"PingFang SC\",\n    \"Hiragino Sans GB\", \"Microsoft YaHei\", sans-serif;",
+    "--font-display: \"Segoe UI Variable Display\", \"Aptos Display\", \"Segoe UI\",\n    \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", sans-serif;",
+    "--font-body: \"EB Garamond\", \"Palatino Linotype\", Palatino, Georgia,\n    \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", serif;",
+    "--font-display: var(--font-body);"
+  ],
+  "cname": "www.sby.sh.cn\n",
+  "mathAndCode": {
+    "classical_ai.html": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "smathml_comments.html": "9a982c9416e1a525c463893cbc1683959e8887bbba0b1420e1c6088b9f1d4b9c",
+    "lattice_notes.html": "35909bf08e258ba784ea0c1bb466731cfd42cec2e3b5c263efbc03bec8e69829",
+    "logic.html": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
