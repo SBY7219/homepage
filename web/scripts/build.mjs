@@ -6,9 +6,10 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { build } from "esbuild";
 import { compileArticle } from "../lib/compiler.mjs";
 import { validateManifest } from "../lib/article/article-manifest.mjs";
-import { articleSearchDocuments, createSearchIndex, legacySearchDocument } from "../lib/search/index.mjs";
+import { articleSearchDocuments, createSearchIndex, legacySearchDocument, pdfSearchDocuments } from "../lib/search/index.mjs";
 import { INDEX_PATH } from "../lib/search/options.mjs";
-import { articlePage, blogPage, escapeHtml, searchPage } from "../lib/templates.mjs";
+import { articlePage, blogPage, notesPage, statisticsPage, escapeHtml, searchPage } from "../lib/templates.mjs";
+import { searchExclusions, searchMetadata } from "../content/catalog.mjs";
 import { publishStaticFiles } from "./publish.mjs";
 
 export const root = fileURLToPath(new URL("../../", import.meta.url));
@@ -70,23 +71,28 @@ export async function buildSite() {
     posts.push(await compileArticle(source, filename.slice(0, -4), origin));
   }
   validateManifest(posts);
-  const replaced = new Set(["blog.html", "rss.xml", ...posts.map(post => `blog/${post.slug}.html`)]);
+  const statistics = JSON.parse(await readFile(path.join(root, "web/content/statistics.json"), "utf8"));
+  const replaced = new Set(["notes.html", "probstat.html", "blog.html", "rss.xml", ...posts.map(post => `blog/${post.slug}.html`)]);
   const stage = await mkdtemp(path.join(root, ".site-build-"));
   try {
-    const documents = posts.flatMap(articleSearchDocuments);
+    const documents = [...posts.flatMap(articleSearchDocuments), ...pdfSearchDocuments(statistics)];
     const files = legacyFiles();
     for (const filename of files) {
       if (replaced.has(filename)) continue;
       const destination = path.join(stage, filename);
       await mkdir(path.dirname(destination), { recursive: true });
       await cp(path.join(root, filename), destination);
-      if (filename.endsWith(".html") && !filename.startsWith("nutrition/")) {
-        const document = legacySearchDocument(await readFile(destination, "utf8"), filename);
+      if (filename.endsWith(".html") && !filename.startsWith("nutrition/") && !searchExclusions[filename]) {
+        const document = legacySearchDocument(await readFile(destination, "utf8"), filename, searchMetadata(filename));
         if (document) documents.push(document);
       }
     }
     const index = await readFile(path.join(root, "web/templates/blog.html"), "utf8");
     await write(stage, "blog.html", blogPage(index, posts));
+    await write(stage, "notes.html", notesPage(await readFile(path.join(root, "web/templates/notes.html"), "utf8")));
+    const statisticsHtml = statisticsPage(await readFile(path.join(root, "web/templates/statistics.html"), "utf8"), statistics);
+    await write(stage, "probstat.html", statisticsHtml);
+    documents.push(legacySearchDocument(statisticsHtml, "probstat.html", searchMetadata("probstat.html")));
     await write(stage, "search.html", searchPage());
     await write(stage, "rss.xml", feed(await readFile(path.join(root, "web/templates/rss.xml"), "utf8"), posts, origin));
     for (const post of posts) {
@@ -113,7 +119,7 @@ export async function buildSite() {
       bundle: true, format: "esm", platform: "browser", target: "es2022", minify: true,
       legalComments: "eof",
     });
-    const generatedFiles = ["blog.html", "rss.xml", "search.html", INDEX_PATH.slice(1),
+    const generatedFiles = ["notes.html", "probstat.html", "blog.html", "rss.xml", "search.html", INDEX_PATH.slice(1),
       ...posts.flatMap(post => [`blog/${post.slug}.html`, `blog/${post.slug}.md`, `s/${post.id}/index.html`]),
       ...await filesUnder(path.join(stage, "assets/blog"), "assets/blog"),
     ].sort();

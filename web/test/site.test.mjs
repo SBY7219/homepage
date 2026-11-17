@@ -3,25 +3,10 @@ import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { parse } from "parse5";
 import { legacyFiles, output, root } from "../scripts/build.mjs";
 
-function text(node) {
-  return node.nodeName === "#text" ? node.value : (node.childNodes ?? []).map(text).join(" ");
-}
-
-function articleText(html) {
-  let article;
-  function find(node) {
-    if (node.tagName === "article") article = node;
-    for (const child of node.childNodes ?? []) find(child);
-  }
-  find(parse(html));
-  return text(article).replace(/\s+/g, " ").trim();
-}
-
-test("every existing published file keeps its bytes except the MDX article, blog index and RSS", async () => {
-  const derived = new Set(["blog.html", "rss.xml", "blog/2026-02-notes-and-writing-plan.html"]);
+test("every source file is preserved in the preview except generated catalogs, the MDX article and RSS", async () => {
+  const derived = new Set(["notes.html", "probstat.html", "blog.html", "rss.xml", "blog/2026-02-notes-and-writing-plan.html"]);
   const digest = content => createHash("sha256").update(content).digest("hex");
   let checked = 0;
   for (const filename of legacyFiles()) {
@@ -34,15 +19,22 @@ test("every existing published file keeps its bytes except the MDX article, blog
   assert.ok(checked > 200);
 });
 
-test("the migrated article preserves the full visible article text at its existing address", async () => {
+test("reading routes replace the writing promise at its existing address and retain its creation date", async () => {
   const filename = "blog/2026-02-notes-and-writing-plan.html";
-  const original = articleText(await readFile(path.join(root, "web/templates/original-writing-plan.html"), "utf8"));
+  const original = await readFile(path.join(root, "web/templates/original-writing-plan.html"), "utf8");
   const built = await readFile(path.join(output, filename), "utf8");
-  assert.equal(articleText(built).replace(/ Markdown · Short link$/, ""), original);
+  assert.match(original, /February 13, 2026/);
+  assert.match(built, /datetime="2026-02-13"/);
+  assert.match(built, /<h1>Reading routes<\/h1>/);
+  assert.match(built, /Statistical inference/);
+  assert.match(built, /Types and proofs/);
+  assert.match(built, /Language implementation/);
+  assert.doesNotMatch(built, /I plan to write|Topic surveys, proof notes/);
   assert.match(built, /\/blog\/2026-02-notes-and-writing-plan\.md/);
   assert.doesNotMatch(built, /<script[^>]+src="https?:|__next|hydrateRoot/);
   const markdown = await readFile(path.join(output, "blog/2026-02-notes-and-writing-plan.md"), "utf8");
-  assert.match(markdown, /I plan to write topic surveys, proof notes, and updates on translation projects\./);
+  assert.match(markdown, /## Statistical inference/);
+  assert.match(markdown, /P423/);
 });
 
 test("new static navigation preserves existing writing links and gives search and fixed IDs usable destinations", async () => {

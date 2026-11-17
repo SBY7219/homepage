@@ -602,9 +602,15 @@ main li {
   border-bottom: 1px solid var(--rule);
 }
 
-.post-list h2 {
+.post-list h2,
+.post-list h3 {
   margin: 0 0 0.2rem;
   font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.catalog-list > li:last-child {
+  border-bottom: 0;
 }
 
 .post-date,
