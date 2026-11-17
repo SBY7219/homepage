@@ -1,2 +1,7 @@
 compiled/
 *.bak
+web/node_modules/
+_site/
+.site-build-*/
+.env
+.env.local
