@@ -213,6 +213,7 @@ export function exportArticle(tree, meta, slug, { includeHeader = true, siteOrig
     para(t(`Created: ${meta.created}; Modified: ${meta.modified}; Categories: ${meta.categories.join(", ")}; Tags: ${meta.tags.join(", ")}.`)),
   );
   converted.push(...ctx.footnotes);
+  if (meta.titleNote) converted.push(para(strong("Title note."), t(` ${meta.titleNote.trim()}`)));
   const serializer = unified().use(remarkStringify).use(remarkGfm).use(remarkMath);
   return serializer.stringify({ type: "root", children: converted });
 }

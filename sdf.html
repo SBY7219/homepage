@@ -1,4 +1,6 @@
-<html><head><meta charset="utf-8"/><title>灵活软件设计</title><link href="styles.css" rel="stylesheet"/></head><body><h1>灵活软件设计</h1><h2>前言</h2><p>有时当你写着程序, 就卡住了. 或许这是因为你意识到你没能理解问题的某个方面, 但更多情况下往往是因为你先前在程序设计的阶段做出了一个关于数据结构或者代码组织方式的决策, 太过局限而又很难重来.</p><p>本书是关于维护灵活性的特定程序组织策略的大师课程. 现在我们都知道尽管声明一个固定长度的数组用于存放要被处理的数据是很容易的事情, 然而这样一个设计决定往往成为令人不快的限制, </p><h2>自序</h2><h2>第1章 自然和设计中的灵活性</h2><h2>第2章 领域特定语言</h2><h3>第2.1节 组合子</h3><h4>第2.1.1小节 函数组合子</h4><pre><code>(define (compose f g)
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/><title>灵活软件设计</title><link href="styles.css?v=reading" rel="stylesheet"/></head><body class="legacy-reading"><h1>灵活软件设计</h1><h2>前言</h2><p>有时当你写着程序, 就卡住了. 或许这是因为你意识到你没能理解问题的某个方面, 但更多情况下往往是因为你先前在程序设计的阶段做出了一个关于数据结构或者代码组织方式的决策, 太过局限而又很难重来.</p><p>本书是关于维护灵活性的特定程序组织策略的大师课程. 现在我们都知道尽管声明一个固定长度的数组用于存放要被处理的数据是很容易的事情, 然而这样一个设计决定往往成为令人不快的限制, </p><h2>自序</h2><h2>第1章 自然和设计中的灵活性</h2><h2>第2章 领域特定语言</h2><h3>第2.1节 组合子</h3><h4>第2.1.1小节 函数组合子</h4><pre><code>(define (compose f g)
   (lambda args
     (f (apply g args))))</code></pre><pre><code>(define (compose f g)
   (define (the-composition . args)

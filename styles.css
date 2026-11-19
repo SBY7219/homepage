@@ -501,34 +501,57 @@ p {
   border-top: 1px solid var(--rule);
 }
 
-/* Internal indexes and the existing note corpus */
+/* Interior pages share the reading palette. */
+
+:root:has(> body.legacy-reading, > body > .site-header) {
+  --paper: #eeeff1;
+  --paper-soft: #f9f8f5;
+  --ink: #212731;
+  --accent: #233750;
+  --accent-soft: #495464;
+  --rule: #cdd2d9;
+  --reading-rule: #949ca8;
+  --reading-serif: "EB Garamond", Georgia, "Songti SC", "Noto Serif CJK SC", SimSun, SHSerif, serif;
+  --site-gutters: clamp(2rem, 8vw, 4rem);
+  background: var(--paper-soft);
+}
+
+:where(.legacy-reading, body:has(> .site-header)) a {
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+:where(.legacy-reading, body:has(> .site-header)) a:is(:hover, :focus-visible) {
+  text-decoration-color: currentColor;
+}
 
 .site-shell {
-  width: min(860px, calc(100% - 2.4rem));
+  width: min(860px, calc(100% - var(--site-gutters)));
   margin: 0 auto;
 }
 
 .site-header {
-  position: sticky;
-  z-index: 40;
-  top: 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(0.85rem, 2.5vw, 1.75rem) 0.75rem;
+}
+
+.site-header .site-shell {
+  border-block: 1px solid var(--reading-rule);
 }
 
 .top-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1rem;
-  padding: 0.9rem 0;
+  justify-content: center;
+  gap: 0.15rem clamp(0.5rem, 2.3vw, 1.4rem);
+  padding-block: 0.7rem;
 }
 
 .top-nav a {
-  color: var(--accent-soft);
-  font-size: 0.81rem;
-  font-weight: 680;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
+  display: inline-flex;
+  min-block-size: 24px;
+  align-items: center;
+  color: var(--accent);
+  font: 600 0.9rem/1.2 var(--reading-serif);
+  letter-spacing: 0.01em;
   text-decoration: none;
 }
 
@@ -541,7 +564,7 @@ p {
 
 .site-main {
   font-size: 1.125rem;
-  padding: 3.5rem 0 4.5rem;
+  padding: clamp(1.55rem, 4.25vw, 2.65rem) 0 4.5rem;
 }
 
 .page-header {
@@ -551,8 +574,9 @@ p {
 
 .page-header h1 {
   margin: 0 0 1rem;
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  font-weight: 800;
+  color: var(--ink);
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 2.5rem);
+  font-weight: 600;
 }
 
 .page-header p {
@@ -567,13 +591,14 @@ p {
 }
 
 .page-section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 1.5rem;
 }
 
 .page-section h2 {
   margin: 0 0 1.15rem;
+  color: var(--ink);
   font-size: 1.45rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .page-section h3 {
@@ -606,7 +631,7 @@ main li {
 .post-list h3 {
   margin: 0 0 0.2rem;
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .catalog-list > li:last-child {
@@ -726,6 +751,61 @@ table.law blockquote {
   border: 2.5px dashed #ffffff;
 }
 
+/* Reading pages compiled from SMathML retain their native math and diagrams. */
+
+.legacy-reading {
+  inline-size: min(46rem, calc(100% - var(--site-gutters)));
+  min-block-size: 100vh;
+  margin-inline: auto;
+  padding-block: clamp(1.25rem, 3.5vw, 2.5rem) 4rem;
+  font: 1.125rem/1.65 var(--reading-serif);
+  overflow-wrap: anywhere;
+}
+
+.legacy-reading :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--ink);
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.legacy-reading > h1:first-child {
+  margin-block: 0 1.5rem;
+  padding-block: 0.85em;
+  border-block: 1px solid var(--reading-rule);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.125rem);
+  text-align: center;
+}
+
+.legacy-reading img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+.legacy-reading pre {
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  overflow-wrap: normal;
+}
+
+.legacy-reading :is(pre, code, ms) {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.legacy-reading .dashed {
+  border-color: var(--reading-rule);
+}
+
+.legacy-reading :is(p, div, li):has(> :is(math, svg, table)) {
+  overflow-x: auto;
+}
+
+.legacy-reading math[display="block"] {
+  max-inline-size: 100%;
+  overflow-x: auto;
+}
+
 @media (min-width: 1280px) {
   :root {
     --panel-width: 25vw;
@@ -826,17 +906,12 @@ table.law blockquote {
 }
 
 @media (max-width: 760px) {
-  .site-shell {
-    width: min(920px, calc(100% - 1.5rem));
-  }
+  .site-main { padding-block-end: 3rem; }
+}
 
-  .site-main {
-    padding: 2.5rem 0 3rem;
-  }
-
-  .top-nav {
-    gap: 0.35rem 0.8rem;
-  }
+@media (max-width: 360px) {
+  .top-nav { column-gap: 0.3125rem; }
+  .top-nav a { font-size: 0.825rem; }
 }
 
 @media print {

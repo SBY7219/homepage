@@ -21,16 +21,16 @@ function navigation() {
   </nav></div></header>`;
 }
 
-export function documentPage({ title, description = "", body, extraHead = "" }) {
+export function documentPage({ title, description = "", body, extraHead = "", bodyClass = "" }) {
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${escapeHtml(title)}</title>
-${description ? `    <meta name="description" content="${escapeHtml(description)}" />\n` : ""}    <link href="/styles.css?v=garamond-nav" rel="stylesheet" />
+${description ? `    <meta name="description" content="${escapeHtml(description)}" />\n` : ""}    <link href="/styles.css?v=reading" rel="stylesheet" />
 ${extraHead ? `    ${extraHead}\n` : ""}  </head>
-  <body>${navigation()}${body}</body>
+  <body${bodyClass ? ` class="${escapeHtml(bodyClass)}"` : ""}>${navigation()}${body}</body>
 </html>
 `;
 }
@@ -38,18 +38,28 @@ ${extraHead ? `    ${extraHead}\n` : ""}  </head>
 export function articlePage(post, origin) {
   const path = `/blog/${post.slug}.html`;
   const modified = post.modified !== post.created
-    ? ` · Updated ${escapeHtml(displayDate(post.modified))}` : "";
+    ? ` · Updated <time datetime="${post.modified}">${escapeHtml(displayDate(post.modified))}</time>` : "";
+  const noteId = `title-note-${post.id.toLowerCase()}`;
+  const noteRef = post.titleNote
+    ? `<sup class="article-title-note-ref"><a href="#${noteId}" id="${noteId}-ref" aria-label="Read the title note">*</a></sup>` : "";
+  const titleNote = post.titleNote
+    ? `<aside class="article-title-note" id="${noteId}" aria-label="Title note">
+      <p><a href="#${noteId}-ref" aria-label="Back to the article title">*</a> ${escapeHtml(post.titleNote)}</p>
+    </aside>` : "";
   return documentPage({
     title: `${post.title} | Blog`, description: post.description,
+    bodyClass: "article-page-body",
     extraHead: `<link rel="canonical" href="${escapeHtml(origin + path)}" />
       <link rel="alternate" type="text/markdown" href="/blog/${post.slug}.md" />
-      <link rel="stylesheet" href="/assets/blog/article.css" />
-      <link rel="stylesheet" href="/assets/blog/katex/katex.min.css" />`,
-    body: `<main class="site-shell"><article class="page-section mdx-article">
-      <h1>${escapeHtml(post.title)}</h1>
-      <p class="post-date"><time datetime="${post.created}">${escapeHtml(displayDate(post.created))}</time>${modified}</p>
-      ${post.html}
-      <p class="article-tools"><a href="/blog/${post.slug}.md">Markdown</a> · <a href="/s/${post.id}/">Short link</a></p>
+      <link rel="stylesheet" href="/assets/blog/katex/katex.min.css" />
+      <link rel="stylesheet" href="/assets/blog/article.css?v=reading" />`,
+    body: `<main class="site-shell article-page"><article class="mdx-article">
+      <header class="article-heading">
+        <h1>${escapeHtml(post.title)}${noteRef}</h1>
+        <p class="post-date"><time datetime="${post.created}">${escapeHtml(displayDate(post.created))}</time>${modified}</p>
+      </header>
+      <div class="article-content">${post.html}</div>${titleNote ? `\n      ${titleNote}` : ""}
+      <footer class="article-tools"><a href="/blog/${post.slug}.md">Markdown</a> · <a href="/s/${post.id}/">Short link</a></footer>
     </article></main><script type="module" src="/assets/blog/article.js"></script>`,
   });
 }
@@ -98,7 +108,7 @@ export function statisticsPage(source, statistics) {
 export function searchPage() {
   return documentPage({
     title: "Search | 施秉佚",
-    extraHead: '<link rel="stylesheet" href="/assets/blog/article.css" />',
+    extraHead: '<link rel="stylesheet" href="/assets/blog/article.css?v=reading" />',
     body: `<main class="site-shell site-main site-search">
       <header class="page-header"><h1>Search</h1></header>
       <form role="search">
