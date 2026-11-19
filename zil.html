@@ -1,4 +1,6 @@
-<html><head><meta charset="utf-8"/><title>LearningZIL笔记</title><link href="styles.css" rel="stylesheet"/></head><body><h1>LearningZIL笔记</h1><h2>第1章 基本</h2><p>大致上IF由两类实体构成, 对象和例程. 对象又大致上可分为两类, 房间和物品.</p><p>既然处理了输入, 游戏就必须在适当的时候产生回复.</p><p>parser的目的在于将用户的输入规约为动词, 直接宾语, 间接宾语. 在ZIL中, 它们分别被称为<code>PRSA</code>, <code>PRSO</code>, <code>PRSI</code>. parser的结果分为三类, 仅包含动词, 包含动词和直接宾语, 包含动词, 直接宾语和间接宾语.</p><p>间接宾语将首先拥有处理输入的机会, 其次是直接宾语, 最后是动词. 这种做法的想法在于, 它们的特殊性依次降低.</p><h2>第2章 创建房间</h2><p>以下是一个房间的定义:</p><pre><code>&lt;ROOM LIVING-ROOM
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/><title>LearningZIL笔记</title><link href="styles.css?v=reading" rel="stylesheet"/></head><body class="legacy-reading"><h1>LearningZIL笔记</h1><h2>第1章 基本</h2><p>大致上IF由两类实体构成, 对象和例程. 对象又大致上可分为两类, 房间和物品.</p><p>既然处理了输入, 游戏就必须在适当的时候产生回复.</p><p>parser的目的在于将用户的输入规约为动词, 直接宾语, 间接宾语. 在ZIL中, 它们分别被称为<code>PRSA</code>, <code>PRSO</code>, <code>PRSI</code>. parser的结果分为三类, 仅包含动词, 包含动词和直接宾语, 包含动词, 直接宾语和间接宾语.</p><p>间接宾语将首先拥有处理输入的机会, 其次是直接宾语, 最后是动词. 这种做法的想法在于, 它们的特殊性依次降低.</p><h2>第2章 创建房间</h2><p>以下是一个房间的定义:</p><pre><code>&lt;ROOM LIVING-ROOM
   (LOC ROOMS)
   (DESC &quot;Living Room&quot;)
   (EAST TO KITCHEN)

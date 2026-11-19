@@ -1,4 +1,6 @@
-<html><head><meta charset="utf-8"/><title>一些程序</title><link href="styles.css" rel="stylesheet"/></head><body><h1>一些程序</h1><p>Programs must be written for people to read, and only incidentally for machines to execute.</p><h2>(按值调用的)Y组合子</h2><pre><code>(define Y
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/><title>一些程序</title><link href="styles.css?v=reading" rel="stylesheet"/></head><body class="legacy-reading"><h1>一些程序</h1><p>Programs must be written for people to read, and only incidentally for machines to execute.</p><h2>(按值调用的)Y组合子</h2><pre><code>(define Y
   (lambda (h)
     ((lambda (f) (f f))
      (lambda (g)

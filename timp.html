@@ -1,4 +1,6 @@
-<html><head><meta charset="utf-8"/><title>Scheme的三种实现模型</title><link href="styles.css" rel="stylesheet"/></head><body><h1>Scheme的三种实现模型</h1><p>注记: 本文是1987年发表的, 所以其中的Scheme语言与现在相比或多或少有些区别. 例如, 空表也被视为假, 而不是R<sup>5</sup>RS及之后的真.</p><h2>第1章 引论</h2><h3>第1.1节 函数式编程语言</h3><h3>第1.2节 函数式编程语言实现</h3><h3>第1.3节 多处理器系统和实现</h3><h2>第2章 Scheme语言</h2><h3>第2.1节 句法形式和原始函数</h3><h4>第2.1.1小节 核心句法形式</h4><p><pre><code>&lt;core> -> &lt;object>
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/><title>Scheme的三种实现模型</title><link href="styles.css?v=reading" rel="stylesheet"/></head><body class="legacy-reading"><h1>Scheme的三种实现模型</h1><p>注记: 本文是1987年发表的, 所以其中的Scheme语言与现在相比或多或少有些区别. 例如, 空表也被视为假, 而不是R<sup>5</sup>RS及之后的真.</p><h2>第1章 引论</h2><h3>第1.1节 函数式编程语言</h3><h3>第1.2节 函数式编程语言实现</h3><h3>第1.3节 多处理器系统和实现</h3><h2>第2章 Scheme语言</h2><h3>第2.1节 句法形式和原始函数</h3><h4>第2.1.1小节 核心句法形式</h4><p><pre><code>&lt;core> -> &lt;object>
 &lt;core> -> &lt;variable>
 &lt;core> -> (quote &lt;object>)
 &lt;core> -> (lambda (&lt;variable> ...) &lt;core>)

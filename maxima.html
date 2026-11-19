@@ -1,4 +1,6 @@
-<html><head><meta charset="utf-8"/><title>理解Maxima</title><link href="styles.css" rel="stylesheet"/></head><body><h1>理解Maxima</h1><p>阅读Maxima的源代码时记下的一些笔记, 仅此而已.</p><h2>utils.lisp</h2><p><code>while</code>宏的功能恰如其名.</p><pre><code>(defmacro while (cond &amp;rest body)
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/><title>理解Maxima</title><link href="styles.css?v=reading" rel="stylesheet"/></head><body class="legacy-reading"><h1>理解Maxima</h1><p>阅读Maxima的源代码时记下的一些笔记, 仅此而已.</p><h2>utils.lisp</h2><p><code>while</code>宏的功能恰如其名.</p><pre><code>(defmacro while (cond &amp;rest body)
   `(do ()
        ((not ,cond))
      ,@body))</code></pre><p><code>maxima-getenv</code>是平台无关的获取环境变量的值的函数.</p><pre><code>(defun maxima-getenv (envvar)

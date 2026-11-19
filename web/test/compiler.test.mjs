@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import MiniSearch from "minisearch";
 import { compileArticle } from "../lib/compiler.mjs";
+import { articlePage } from "../lib/templates.mjs";
 import { createSearchIndex, legacySearchDocument } from "../lib/search/index.mjs";
 import { searchIndexOptions, searchQueryOptions } from "../lib/search/options.mjs";
 
@@ -58,6 +59,21 @@ test("a static build rejects protected articles and arbitrary imports", async ()
   const protectedSource = metadata.replace('numberHeadings: true', 'password: "fixture-only", numberHeadings: true');
   await assert.rejects(compileArticle(protectedSource, "fixture", "https://www.sby.sh.cn"), /protected/);
   await assert.rejects(compileArticle(`${metadata}\nimport fs from 'node:fs';`, "fixture", "https://www.sby.sh.cn"), /static meta export/);
+});
+
+test("an optional title note links back to the title and survives Markdown export", async () => {
+  const origin = "https://www.sby.sh.cn";
+  const noted = metadata.replace('numberHeadings: true', 'titleNote: "A < B", numberHeadings: true');
+  const post = await compileArticle(noted + "\n\nBody.", "fixture", origin);
+  const html = articlePage(post, origin);
+  assert.match(html, /href="#title-note-t3st1" id="title-note-t3st1-ref"/);
+  assert.match(html, /id="title-note-t3st1"/);
+  assert.match(html, /href="#title-note-t3st1-ref"[^>]*>\*<\/a> A &lt; B/);
+  assert.match(post.markdown, /\*\*Title note\.\*\* A \\?< B/);
+
+  const unnoted = await compileArticle(metadata + "\n\nBody.", "fixture", origin);
+  assert.doesNotMatch(articlePage(unnoted, origin), /article-title-note/);
+  await assert.rejects(compileArticle(noted.replace('"A < B"', "true"), "fixture", origin), /titleNote/);
 });
 
 test("legacy prose is searchable in Chinese and English while navigation, code and math are excluded", () => {

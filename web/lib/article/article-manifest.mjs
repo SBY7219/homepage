@@ -44,6 +44,9 @@ export function validatePost(slug, meta) {
       throw new Error(`${label}: ${field} must be a nonempty string`);
     }
   }
+  if (meta.titleNote !== undefined && (typeof meta.titleNote !== "string" || !meta.titleNote.trim())) {
+    throw new Error(`${label}: titleNote must be a nonempty string`);
+  }
   for (const field of ["created", "modified"]) {
     if (typeof meta[field] !== "string" ||
         !/^\d{4}-\d{2}-\d{2}$/.test(meta[field]) ||
